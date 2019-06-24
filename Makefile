@@ -19,6 +19,7 @@ LIBFT_DIR=./libft
 INC_DIR=./includes
 OBJ_DIR=./obj
 SRC_DIR=./src
+
 ifeq ($(OS),Linux)
     MINILIBX_DIR=./minilibx
     MINILIBX_LINK=-L$(MINILIBX_DIR) -lXext -lX11 -lmlx
@@ -32,13 +33,16 @@ CC=gcc
 CC_FLAGS=-Wall -Wextra -Werror
 
 OBJ=$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
-LIBS=-lm -lft $(MINILIBX_LINK)
+LIBS=-L$(LIBFT_DIR) -lft $(MINILIBX_LINK) -lm
+INCLUDES=-I $(LIBFT_DIR) -I $(MINILIBX_DIR) -I $(INC_DIR)
+TEST_NAMES=test_mat
+TEST_SRC:=$(shell find src/ -maxdepth 1 -type f \( -regex ".*\.c" ! -name "main.c" \))
 
 all: $(NAME)
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I $(LIBFT_DIR) -I $(MINILIBX_DIR) -I $(INC_DIR) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)/ --no-print-directory
@@ -47,7 +51,7 @@ $(MINILIBX):
 	@$(MAKE) -C $(MINILIBX_DIR)/ --no-print-directory
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
-	@$(CC)  $(CC_FLAGS) -L$(LIBFT_DIR) $(OBJ) $(LIBS) -o ${NAME};
+	@$(CC)  $(CC_FLAGS) $(OBJ) $(LIBS) -o ${NAME};
 
 clean :
 	@/bin/rm -rf $(OBJ_DIR)
@@ -62,17 +66,12 @@ fclean : clean
 
 re : fclean all
 
-
-TEST_NAMES=\
-	test_ft_printf_di
-
 test-all:
 	@for s in $(TEST_NAMES) ; do \
-		if [ -f tests/$$s.c ]; then \
-			$(MAKE) test name=$$s --no-print-directory;\
-		fi; \
+		$(MAKE) test name=$$s --no-print-directory;\
 	done
 
-test: all
-	@gcc  $(CC_FLAGS) -I $(INC_DIR) -I $(LIBFT_DIR) -L. tests/$(name).c -lftprintf -o tests/$(name);
-	$(info ************ $(name))
+test: $(LIBFT) $(MINILIBX)
+	@gcc  $(CC_FLAGS) $(INCLUDES) $(TEST_SRC) tests/$(name).c $(LIBS) -o tests/$(name);
+	$(info ************ $(name) *************)
+	@tests/$(name)

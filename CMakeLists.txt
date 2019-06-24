@@ -8,10 +8,11 @@ set(GCC_COVERAGE_COMPILE_FLAGS "${GCC_COVERAGE_COMPILE_FLAGS} -Wall -Wextra -Wer
 file(GLOB SRC src/*.c)
 
 #     fdf
+link_directories(minilibx libft)
+include_directories(minilibx includes libft)
+link_libraries(-lft libmlx.a -lXext -lX11 -lm)
 add_executable(${NAME} ${SRC})
-target_include_directories(${NAME} PRIVATE includes minilibx)
-target_link_directories(${NAME} PRIVATE minilibx)
-target_link_libraries(${NAME} libmlx.a -lXext -lX11 -lm)
+
 # end fdf
 
 add_subdirectory(tests)
