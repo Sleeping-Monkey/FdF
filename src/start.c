@@ -38,8 +38,8 @@ void    start(char *file_name)
     if (!init_points(&displ, file_name))
         return ;
     displ.mlx = mlx_init();
-    displ.size_x = 2000;
-	displ.size_y = 2000;
+    displ.size_x = 300;
+	displ.size_y = 300;
 	displ.win = mlx_new_window(displ.mlx, displ.size_x, displ.size_y, "Hello!");
     mlx_key_hook(displ.win, &key_hook, &displ);
 	mlx_mouse_hook(displ.win, &mouse_hook, &displ);

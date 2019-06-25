@@ -28,10 +28,8 @@
 
 typedef struct	s_point
 {
-	double		x;
-	double		y;
-	double		z;
-	unsigned	color;
+    t_vec3  c;
+    t_vec3  color;
 }				t_point;
 
 typedef	struct	s_img
@@ -68,5 +66,14 @@ int				key_hook(int keycode, t_mlx *displ);
 int				mouse_hook(int button, int x, int y, t_mlx *displ);
 
 void			create_img(t_mlx *displ);
+
+typedef struct  s_terran
+{
+    t_vec3  **points;
+    t_mat3  mat;
+    t_vec3  pos;
+}               t_terran;
+
+void            draw(t_terran *terran, t_mlx *displ);
 
 #endif

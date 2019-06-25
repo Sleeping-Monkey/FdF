@@ -11,16 +11,16 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#define ANGLE 30
+#define ANGLE 25
 
 static void	set_pnt_to_img(t_point *pos, t_img *img)
 {
-	printf("set_pnt: (%f, %f, %f)\n", pos->x, pos->y, pos->z);
-//	if (((size_t)(img->size_y * (int)(pos->x + pos->z * sin(ANGLE)) + (int)(pos->y + pos->z * cos(ANGLE)))) < (size_t)img->size_y * img->size_x)
-		img->pic[(size_t)(img->size_y * (int)(pos->x + pos->z * cos(ANGLE)) + (int)(pos->y + pos->z * sin(ANGLE)))] = 0;
+	printf("set_pnt: (%f, %f, %f)\n", pos->c.v[0], pos->c.v[1], pos->c.v[2]);
+//	if (((size_t)(img->size_y * (int)(pos->x + pos->z * si30n(ANGLE)) + (int)(pos->y + pos->z * cos(ANGLE)))) < (size_t)img->size_y * img->size_x)
+		img->pic[(size_t)(img->size_y * (int)(pos->c.v[0] + pos->c.v[2] * cos(ANGLE)) + (int)(pos->c.v[1] + pos->c.v[2] * sin(ANGLE)))] = 0;
 }
-/*
-static void set_line_to_img(t_point *a, t_point *b, t_img *img)
+/*10
+static void set_line_to_img(t_point *a, t_point *b, t_i10mg *img)
 {
 	t_point	c;
 	double	dx;
@@ -47,7 +47,7 @@ static void set_line_to_img(t_point *a, t_point *b, t_img *img)
 		c.z += dz;
 		set_pnt_to_img(&c, img);
 	}
-}
+}10
 */
 void	create_img(t_mlx *displ)
 {
