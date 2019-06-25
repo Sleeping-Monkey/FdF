@@ -22,10 +22,11 @@ typedef struct	s_mat
 #define NEW(t)((t*)ft_memalloc(sizeof(t)))
 #define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
 #define SIZ_R(n)((sizeof(t_real) * n))
-#define M_SET3(m, ...)(ft_memcpy((m)->e, &(t_real[9]){__VA_ARGS__}, SIZ_R(9)))
-#define V_SET3(v, ...)(ft_memcpy((v)->e, &(t_real[3]){__VA_ARGS__}, SIZ_R(3)))
-#define M_SET4(m, ...)(ft_memcpy((m)->e, &(t_real[16]){__VA_ARGS__}, SIZ_R(16)))
-#define V_SET4(v, ...)(ft_memcpy((v)->e, &(t_real[4]){__VA_ARGS__}, SIZ_R(4)))
+#define REAL(n, ...)((t_real[n]){__VA_ARGS__})
+#define M3_SET(m, ...)(ft_memcpy((m)->e, &REAL(9, __VA_ARGS__), SIZ_R(9)))
+#define V3_SET(v, ...)(ft_memcpy((v)->e, &REAL(3, __VA_ARGS__), SIZ_R(3)))
+#define M4_SET(m, ...)(ft_memcpy((m)->e, &REAL(16, __VA_ARGS__), SIZ_R(16)))
+#define V4_SET(v, ...)(ft_memcpy((v)->e, &REAL(4, __VA_ARGS__), SIZ_R(4)))
 /* ************************************************************************** */
 
 // Matrix ops
