@@ -28,7 +28,14 @@
 
 typedef struct	s_point
 {
-    t_vec3  c;
+    union {
+        t_vec3 c;
+        struct {
+            t_real x;
+            t_real y;
+            t_real z;
+        };
+    };
     t_vec3  color;
 }				t_point;
 
