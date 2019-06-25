@@ -3,7 +3,7 @@
 t_mat			*m_get(int m, int n)
 {
 	t_mat	*mat;
-	size_t 	i;
+	int 	i;
 
 	if ((mat = NEW(t_mat)) == NULL)
 		return (NULL);

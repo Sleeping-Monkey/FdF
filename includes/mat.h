@@ -19,6 +19,16 @@ typedef struct	s_mat
 	t_real *e;
 }				t_mat;
 
+typedef struct  s_mat3
+{
+    t_real  r[3][3];
+}               t_mat3;
+
+typedef struct  s_vec3
+{
+    t_real  v[3];
+}               t_vec3;
+
 #define NEW(t)((t*)ft_memalloc(sizeof(t)))
 #define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
 #define SIZ_R(n)((sizeof(t_real) * n))
@@ -35,15 +45,21 @@ void			m_identity(t_mat *m);
 t_vec			*mv_mul(t_mat *m, t_vec *v, t_vec *out);
 t_vec			*sm_mul(t_mat *m, t_real s, t_vec *out);
 
-// Vector ops
-t_vec			*v_sub(t_vec *a, t_vec *b, t_vec *out);
-t_vec			*v_add(t_vec *a, t_vec *b, t_vec *out);
-t_vec			*v_mul(t_vec *a, t_vec *b, t_vec *out);
-t_vec			*sv_sub(t_vec *a, t_real s, t_vec *out);
-t_vec			*sv_add(t_vec *a, t_real s, t_vec *out);
-t_vec			*sv_mul(t_vec *a, t_real s, t_vec *out);
-t_real			v_mag(t_vec *v);
-t_vec			*v_norm(t_vec *v, t_vec *out);
+// Matrix3 ops
+t_mat3          *m3_mul(t_mat3 *a, t_mat3 *b, t_mat3 *out);
+t_vec3          *m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out);
+
+// TODO: Determinant and Inverse
+t_real          m3_det(t_mat3 *m);
+t_mat3          *m3_inv(t_mat3 *m, t_mat3 *out);
+
+// Vec3 ops
+t_real          v3_mag(t_vec3 *v);
+t_vec3          *v3_add(t_vec3 *a, t_vec3 *b, t_vec3 *out);
+t_vec3          *v3_sub(t_vec3 *a, t_vec3 *b, t_vec3 *out);
+t_vec3          *v3_cross(t_vec3 *a, t_vec3 *b, t_vec3 *out);
+t_vec3          *v3_norm(t_vec3 *v, t_vec3 *out);
+t_vec3          *v3s_mull(t_vec3 *v, t_real s, t_vec3 *out);
 
 // Utils
 t_mat			*m_get(int m, int n);
