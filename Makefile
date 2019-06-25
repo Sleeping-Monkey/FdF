@@ -22,10 +22,10 @@ SRC_DIR=./src
 
 ifeq ($(OS),Linux)
     MINILIBX_DIR=./minilibx
-    MINILIBX_LINK=-L$(MINILIBX_DIR) -lXext -lX11 -lmlx
+    MINILIBX_LINK=-L$(MINILIBX_DIR) -lmlx -lXext -lX11
 else
     MINILIBX_DIR=./minilibx_macos
-    MINILIBX_LINK=-L$(MINILIBX_DIR) -framework OpenGL -framework AppKit -lmlx
+    MINILIBX_LINK=-L$(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 endif
 MINILIBX=$(MINILIBX_DIR)/libmix.a
 
@@ -51,7 +51,7 @@ $(MINILIBX):
 	@$(MAKE) -C $(MINILIBX_DIR)/ --no-print-directory
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
-	@$(CC)  $(CC_FLAGS) $(OBJ) $(LIBS) -o ${NAME};
+	@$(CC)  $(CC_FLAGS) -o $(NAME) $(OBJ) $(INCLUDES) $(LIBS);
 
 clean :
 	@/bin/rm -rf $(OBJ_DIR)
