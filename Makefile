@@ -35,7 +35,7 @@ CC_FLAGS=-Wall -Wextra -Werror
 OBJ=$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 LIBS=-L$(LIBFT_DIR) -lft $(MINILIBX_LINK) -lm
 INCLUDES=-I $(LIBFT_DIR) -I $(MINILIBX_DIR) -I $(INC_DIR)
-TEST_NAMES=test_mat
+TEST_NAMES=test_mat test_mat3
 TEST_SRC:=$(shell find src/ -maxdepth 1 -type f \( -regex ".*\.c" ! -name "main.c" \))
 
 all: $(NAME)
