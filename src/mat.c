@@ -29,28 +29,29 @@ t_mat			*m_get(int m, int n)
 	return (mat);
 }
 
+#include <stdio.h>
 t_mat			*m_mul(t_mat *a, t_mat *b, t_mat *out)
 {
+	int r;
+	int c;
 	int i;
-	int k;
-	int j;
 
 	if (!a || !b || a->n != b->m)
 		return (NULL);
 	if ((!out && !(out = m_get(a->m, b->n)))
 		|| out->m != a->m || out->n != b->n || a == out || b == out)
 		return (NULL);
-	i = a->m;
-	while (i--)
+	r = a->m;
+	while (r--)
 	{
-		k = a->n;
-		while (k--) {
-			if (a->r[i][k]) {
-				j = 0;
-				while (j < b->n) {
-					out->r[i][j] += a->r[i][k] * b->r[i][j];
-					j++;
-				}
+		c = b->n;
+		while (c--)
+		{
+			i = a->n;
+			while (i--)
+			{
+				if (a->r[r][i])
+					out->r[r][c] += a->r[r][i] * b->r[i][c];
 			}
 		}
 	}
@@ -59,22 +60,22 @@ t_mat			*m_mul(t_mat *a, t_mat *b, t_mat *out)
 
 t_vec			*mv_mul(t_mat *m, t_vec *v, t_vec *out)
 {
-	int i;
-	int k;
+	int r;
+	int c;
 
 	if (!m || !v || m->n != v->n)
 		return (NULL);
 	if ((!out && !(out = v_get(m->m)))
 		|| out->n != m->m || v == out)
 		return (NULL);
-	i = m->m;
-	while (i--)
+	r = m->m;
+	while (r--)
 	{
-		k = m->n;
-		while (k--) {
-			if (m->r[i][k]) {
-				out->e[i] += m->r[i][k] * v->e[i];
-			}
+		c = m->n;
+		while (c--)
+		{
+			if (m->r[r][c])
+				out->e[r] += m->r[r][c] * v->e[r];
 		}
 	}
 	return (out);
