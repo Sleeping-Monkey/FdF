@@ -15,7 +15,7 @@ static void put_m4(t_mat4 *m)
 		j = -1;
 		while (++j < 4)
 		{
-			printf(" <i:%d>:%f", (i == j), m->r[i][j]);
+			printf(" %.2f",  m->r[i][j]);
 		}
 		printf("\n");
 	}
@@ -25,7 +25,7 @@ static void put_m4(t_mat4 *m)
 static void put_v4(t_vec4 *v)
 {
 	int i = -1;
-	while (++i < 3)
+	while (++i < 4)
 	{
 		printf("%.2f ", v->v[i]);
 	}
@@ -34,16 +34,27 @@ static void put_v4(t_vec4 *v)
 
 int main()
 {
-	t_mat4 out;
+	t_mat4 out = {};
 	t_mat4 mat = (t_mat4){{
-		  { 0.95 , -0.12 , -0.27 , 0.0 , },
-		  { -0.24 , 0.26 , -0.94 , 0.0 , },
-		  { 0.18 , 0.96 , 0.22 , 0.0 , },
-		  { 0.0 , 1.0 , 1.0 , 1.0 , }
+		  { 0.95 , -0.12 , -0.27 , 0.0},
+		  { -0.24 , 0.26 , -0.94 , 0.0},
+		  { 0.18 , 0.96 , 0.22 , 0.0},
+		  { 0.0 , 1.0 , 1.0 , 1.0}
 	}};
-	t_mat4 inv;
+	t_mat4 inv = {};
 	put_m4(m4_inv(&mat, &inv));
-	put_m4(m4_mul(&inv, &mat, &out));
+	m4_mul(&inv, &mat, &out);
 	assert(m4_is_identity(&out));
+	t_mat4 mat2 = (t_mat4){{
+								   { 1 , 0, 0 , 0.0},
+								   { 0 , 1 , 0, 0.0},
+								   { 0, 0, 1, 0.0},
+								   { 2.407, -0.7918, -1.8178, 1.0}
+						   }};
+	printf("inv\n");
+	put_m4(&inv);
+	put_m4(m4_mul(&mat2, &inv, NULL));
+	t_vec4 v = {2.407, -0.7918, -1.8178, 1.0};
+	put_v4(m4v4_mul(&inv, &v, NULL));
 	return (0);
 }
