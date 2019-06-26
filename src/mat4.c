@@ -43,7 +43,7 @@ t_vec4          *m4v4_mul(t_mat4 *a, t_vec4 *b, t_vec4 *out)
         while (c--)
         {
             if (a->r[r][c])
-                out->v[r] += a->r[r][c] * b->v[r];
+                out->v[c] += a->r[r][c] * b->v[r];
         }
     }
     return (out);
