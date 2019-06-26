@@ -42,19 +42,18 @@ int main()
 		  { 0.0 , 1.0 , 1.0 , 1.0}
 	}};
 	t_mat4 inv = {};
-	put_m4(m4_inv(&mat, &inv));
-	m4_mul(&inv, &mat, &out);
-	assert(m4_is_identity(&out));
-	t_mat4 mat2 = (t_mat4){{
-								   { 1 , 0, 0 , 0.0},
-								   { 0 , 1 , 0, 0.0},
-								   { 0, 0, 1, 0.0},
-								   { 2.407, -0.7918, -1.8178, 1.0}
-						   }};
+
+	printf("orig\n");
+	put_m4(&mat);
+	// Inverse matrix
 	printf("inv\n");
-	put_m4(&inv);
-	put_m4(m4_mul(&mat2, &inv, NULL));
+	put_m4(m4_inv(&mat, &inv));
+	// Check inverse works
+	assert(m4_is_identity(m4_mul(&inv, &mat, &out)));
+	printf("orig vector\n");
 	t_vec4 v = {2.407, -0.7918, -1.8178, 1.0};
+	put_v4(&v);
+	printf("transformed into mat space\n");
 	put_v4(m4v4_mul(&inv, &v, NULL));
 	return (0);
 }
