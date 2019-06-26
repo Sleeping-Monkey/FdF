@@ -50,10 +50,10 @@ int main()
 	put_m4(m4_inv(&mat, &inv));
 	// Check inverse works
 	assert(m4_is_identity(m4_mul(&inv, &mat, &out)));
-	printf("orig vector\n");
+	printf("orig vector: ");
 	t_vec4 v = {2.407, -0.7918, -1.8178, 1.0};
 	put_v4(&v);
-	printf("transformed into mat space\n");
+	printf("inverse(matrix) * vector = ");
 	put_v4(m4v4_mul(&inv, &v, NULL));
 	return (0);
 }
