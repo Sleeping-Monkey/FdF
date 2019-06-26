@@ -48,3 +48,17 @@ t_vec3          *m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out)
     }
     return (out);
 }
+
+void          	m3_identity(t_mat3 *m)
+{
+	int	i;
+	int	j;
+
+	i = 3;
+	while (i--)
+	{
+		j = 3;
+		while (j--)
+			m->r[i][j] = i == j;
+	}
+}

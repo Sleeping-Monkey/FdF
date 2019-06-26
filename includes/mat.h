@@ -48,6 +48,7 @@ t_vec			*sm_mul(t_mat *m, t_real s, t_vec *out);
 // Matrix3 ops
 t_mat3          *m3_mul(t_mat3 *a, t_mat3 *b, t_mat3 *out);
 t_vec3          *m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out);
+void          	m3_identity(t_mat3 *m);
 
 // TODO: Determinant and Inverse
 t_real          m3_det(t_mat3 *m);
