@@ -4,6 +4,9 @@
 #include "fdf.h"
 
 typedef double	t_real;
+#define EPSILON 0.000001
+#define R_ABS fabs
+#define R_ROUND round
 
 typedef struct	s_vec
 {
@@ -19,15 +22,15 @@ typedef struct	s_mat
 	t_real *e;
 }				t_mat;
 
-typedef struct  s_mat3
+typedef struct  s_mat4
 {
-    t_real  r[3][3];
-}               t_mat3;
+    t_real  r[4][4];
+}               t_mat4;
 
-typedef struct  s_vec3
+typedef struct  s_vec4
 {
-    t_real  v[3];
-}               t_vec3;
+    t_real  v[4];
+}               t_vec4;
 
 #define NEW(t)((t*)ft_memalloc(sizeof(t)))
 #define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
@@ -46,21 +49,24 @@ t_vec			*mv_mul(t_mat *m, t_vec *v, t_vec *out);
 t_vec			*sm_mul(t_mat *m, t_real s, t_vec *out);
 
 // Matrix3 ops
-t_mat3          *m3_mul(t_mat3 *a, t_mat3 *b, t_mat3 *out);
-t_vec3          *m3v3_mul(t_mat3 *a, t_vec3 *b, t_vec3 *out);
-void          	m3_identity(t_mat3 *m);
+t_mat4          *m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out);
+t_vec4          *m4v4_mul(t_mat4 *a, t_vec4 *b, t_vec4 *out);
+void          	m4_identity(t_mat4 *m);
+int          	m4_is_identity(t_mat4 *m);
 
 // TODO: Determinant and Inverse
-t_real          m3_det(t_mat3 *m);
-t_mat3          *m3_inv(t_mat3 *m, t_mat3 *out);
+//		implement this?
+//		https://www.sanfoundry.com/c-program-find-inverse-matrix/
+t_real          m4_det(t_mat4 *m);
+t_mat4          *m4_inv(t_mat4 *m, t_mat4 *out);
 
 // Vec3 ops
-t_real          v3_mag(t_vec3 *v);
-t_vec3          *v3_add(t_vec3 *a, t_vec3 *b, t_vec3 *out);
-t_vec3          *v3_sub(t_vec3 *a, t_vec3 *b, t_vec3 *out);
-t_vec3          *v3_cross(t_vec3 *a, t_vec3 *b, t_vec3 *out);
-t_vec3          *v3_norm(t_vec3 *v, t_vec3 *out);
-t_vec3          *v3s_mull(t_vec3 *v, t_real s, t_vec3 *out);
+t_real          v4_mag(t_vec4 *v);
+t_vec4          *v4_add(t_vec4 *a, t_vec4 *b, t_vec4 *out);
+t_vec4          *v4_sub(t_vec4 *a, t_vec4 *b, t_vec4 *out);
+t_vec4          *v4_cross(t_vec4 *a, t_vec4 *b, t_vec4 *out);
+t_vec4          *v4_norm(t_vec4 *v, t_vec4 *out);
+t_vec4          *v4s_mull(t_vec4 *v, t_real s, t_vec4 *out);
 
 // Utils
 t_mat			*m_get(int m, int n);

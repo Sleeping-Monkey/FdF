@@ -29,14 +29,14 @@
 typedef struct	s_point
 {
     union {
-        t_vec3 c;
+        t_vec4 c;
         struct {
             t_real x;
             t_real y;
             t_real z;
         };
     };
-    t_vec3  color;
+    t_vec4  color;
 }				t_point;
 
 typedef	struct	s_img
@@ -76,9 +76,9 @@ void			create_img(t_mlx *displ);
 
 typedef struct  s_terran
 {
-    t_vec3  **points;
-    t_mat3  mat;
-    t_vec3  pos;
+    t_vec4  **points;
+    t_mat4  mat;
+    t_vec4  pos;
 }               t_terran;
 
 void            draw(t_terran *terran, t_mlx *displ);
