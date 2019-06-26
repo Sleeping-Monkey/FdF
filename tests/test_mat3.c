@@ -17,7 +17,7 @@ static void put_m4(t_mat4 *m)
     printf("\n");
 }
 
-static void put_v4(t_vec4 *v)
+static void put_v3(t_vec3 *v)
 {
     int i = -1;
     while (++i < 3)
@@ -36,17 +36,17 @@ int main()
 	m4_mul(&m41, &m42, &m43);
 	put_m4(&m43);
 
-    t_vec4 v = (t_vec4){{1, 1, 1}};
-    t_vec4 v1 = {};
-	m4v4_mul(&m41, &v, &v1);
-	put_v4(&v1);
+    t_vec3 v = (t_vec3){{1, 1, 1}};
+    t_vec3 v1 = {};
+	m4v3_mul(&m41, &v, &v1);
+	put_v3(&v1);
 
-    printf("mag: %f\n", v4_mag(&(t_vec4) {{1, 1, 1}}));
-	put_v4(v4_add(&(t_vec4) {{1, 1, 1}}, &(t_vec4) {{1, 1, 1}}, NULL));
-	put_v4(v4_sub(&(t_vec4) {{1, 1, 1}}, &(t_vec4) {{1, 1, 1}}, NULL));
-    printf("norm mag: %f\n", v4_mag(v4_norm(&(t_vec4) {{1, 1, 1}}, NULL)));
-	put_v4(v4_cross(&(t_vec4) {{1, 0, 0}}, &(t_vec4) {{0, 1, 0}}, NULL));
-	put_v4(v4s_mull(&(t_vec4) {{1, 2, 3}}, 2, NULL));
+    printf("mag: %f\n", v3_mag(&(t_vec3) {{1, 1, 1}}));
+	put_v3(v3_add(&(t_vec3) {{1, 1, 1}}, &(t_vec3) {{1, 1, 1}}, NULL));
+	put_v3(v3_sub(&(t_vec3) {{1, 1, 1}}, &(t_vec3) {{1, 1, 1}}, NULL));
+    printf("norm mag: %f\n", v3_mag(v3_norm(&(t_vec3) {{1, 1, 1}}, NULL)));
+	put_v3(v3_cross(&(t_vec3) {{1, 0, 0}}, &(t_vec3) {{0, 1, 0}}, NULL));
+	put_v3(v3s_mull(&(t_vec3) {{1, 2, 3}}, 2, NULL));
 
     return (0);
 }

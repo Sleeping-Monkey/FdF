@@ -27,25 +27,28 @@ t_mat4           *m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out)
     return (out);
 }
 
-t_vec4          *m4v4_mul(t_mat4 *a, t_vec4 *b, t_vec4 *out)
+t_vec3          *m4v3_mul(t_mat4 *a, t_vec3 *b, t_vec3 *out)
 {
-    int r;
-    int c;
-
     if (!a || !b)
         return (NULL);
-    if ((!out && !(out = NEW(t_vec4))) || b == out)
+    if ((!out && !(out = NEW(t_vec3))) || b == out)
         return (NULL);
-    r = 4;
-    while (r--)
-    {
-        c = 4;
-        while (c--)
-        {
-            if (a->r[r][c])
-                out->v[c] += a->r[r][c] * b->v[r];
-        }
-    }
+    t_real w;
+	w = b->v[0] * a->r[0][3] +
+		b->v[1] * a->r[1][3] +
+		b->v[2] * a->r[2][3] + a->r[3][3];
+	out->v[0] = (
+			b->v[0] * a->r[0][0] +
+			b->v[1] * a->r[1][0] +
+			b->v[2] * a->r[2][0] + a->r[3][0]) / w;
+	out->v[1] = (
+			b->v[0] * a->r[0][1] +
+			b->v[1] * a->r[1][1] +
+			b->v[2] * a->r[2][1] + a->r[3][1]) / w;
+	out->v[2] = (
+			b->v[0] * a->r[0][2] +
+			b->v[1] * a->r[1][2] +
+			b->v[2] * a->r[2][2] + a->r[3][2]) / w;
     return (out);
 }
 

@@ -15,19 +15,19 @@ static void put_m4(t_mat4 *m)
 		j = -1;
 		while (++j < 4)
 		{
-			printf(" %.2f",  m->r[i][j]);
+			printf(" %f",  m->r[i][j]);
 		}
 		printf("\n");
 	}
 	printf("\n");
 }
 
-static void put_v4(t_vec4 *v)
+static void put_v3(t_vec3 *v)
 {
 	int i = -1;
-	while (++i < 4)
+	while (++i < 3)
 	{
-		printf("%.2f ", v->v[i]);
+		printf("%f ", v->v[i]);
 	}
 	printf("\n");
 }
@@ -51,9 +51,9 @@ int main()
 	// Check inverse works
 	assert(m4_is_identity(m4_mul(&inv, &mat, &out)));
 	printf("orig vector: ");
-	t_vec4 v = {2.407, -0.7918, -1.8178, 1.0};
-	put_v4(&v);
+	t_vec3 v = {{2.407, -0.7918, -1.8178}};
+	put_v3(&v);
 	printf("inverse(matrix) * vector = ");
-	put_v4(m4v4_mul(&inv, &v, NULL));
+	put_v3(m4v3_mul(&inv, &v, NULL));
 	return (0);
 }
