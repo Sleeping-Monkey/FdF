@@ -3,22 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+         #
+#    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 15:11:22 by bnesoi            #+#    #+#              #
-#    Updated: 2019/04/26 10:39:49 by bnesoi           ###   ########.fr        #
+#    Updated: 2019/06/27 20:23:42 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fdf
 
-OS:=$(shell uname -s)
-SRC:=$(shell find src/ -maxdepth 1 -type f -regex ".*\.c" -printf "%P\n")
-LIBFT=./libft/libft.a
-LIBFT_DIR=./libft
-INC_DIR=./includes
-OBJ_DIR=./obj
-SRC_DIR=./src
+OS			:=	$(shell uname -s)
+SRC			:=	create_img.c get_points.c mat4.c start.c free_int_arr.c \
+				hooks.c mat4_utils.c vec3.c ft_size_of_arr.c main.c \
+				read_from_file.c
+LIBFT		=	./libft/libft.a
+LIBFT_DIR	=	./libft
+INC_DIR		=	./includes
+OBJ_DIR		=	./obj
+SRC_DIR		=	./src
 
 ifeq ($(OS),Linux)
     MINILIBX_DIR=./minilibx
