@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 15:11:22 by bnesoi            #+#    #+#              #
-#    Updated: 2019/06/27 20:23:42 by ssheba           ###   ########.fr        #
+#    Updated: 2019/06/28 11:24:04 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,10 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
-$(LIBFT):
+$(LIBFT): FAKE
 	@$(MAKE) -C $(LIBFT_DIR)/ --no-print-directory
 
-$(MINILIBX):
+$(MINILIBX): FAKE
 	@$(MAKE) -C $(MINILIBX_DIR)/ --no-print-directory
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
@@ -77,3 +77,5 @@ test: $(LIBFT) $(MINILIBX)
 	@gcc  $(CC_FLAGS) $(INCLUDES) $(TEST_SRC) tests/$(name).c $(LIBS) -o tests/$(name);
 	$(info ************ $(name) *************)
 	@tests/$(name)
+
+.PHONY: FAKE
