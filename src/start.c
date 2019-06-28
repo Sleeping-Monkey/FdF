@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/06/22 13:53:15 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/06/28 11:54:21 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int     init_points(t_mlx *all, char *file_name)
 		ft_putendl_fd("error", 2);
 		return (0);
 	}
-	if (!(all->points = get_points(str, &all->count_of_points)))
+	if (!(all->points = get_points(str, &all->count_of_points, &all->line_of_points)))
 	{
 		ft_putendl_fd("error", 2);
 		return (0);
@@ -37,6 +37,7 @@ void    start(char *file_name)
 
     if (!init_points(&displ, file_name))
         return ;
+//	printf("%i %i =(\n", displ.count_of_points, displ.line_of_points);
     displ.mlx = mlx_init();
     displ.size_x = 300;
 	displ.size_y = 300;

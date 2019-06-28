@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/06/22 13:53:33 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/06/28 11:52:42 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_pnt_to_img(t_point *pos, t_img *img)
 //	if (((size_t)(img->size_y * (int)(pos->x + pos->z * si30n(ANGLE)) + (int)(pos->y + pos->z * cos(ANGLE)))) < (size_t)img->size_y * img->size_x)
 		img->pic[(size_t)(img->size_y * (int)(pos->x + pos->z * cos(ANGLE)) + (int)(pos->y + pos->z * sin(ANGLE)))] = 0;
 }
-/*10
+/*
 static void set_line_to_img(t_point *a, t_point *b, t_i10mg *img)
 {
 	t_point	c;

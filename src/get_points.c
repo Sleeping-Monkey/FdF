@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:06:29 by ssheba            #+#    #+#             */
-/*   Updated: 2019/06/22 16:27:52 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/06/28 11:53:05 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,24 @@ static int		**get_int(char **lines)
 	return (result);
 }
 
-static int		count_of_points(int **int_arr)
+static void		count_of_points(int **int_arr, int *count, int *line)
 {
 	int	i;
-	int	count;
 
 	i = 0;
-	count = 0;
+	*count = 0;
 	while (int_arr[i])
 	{
 		if (i && int_arr[i][0] != int_arr[i - 1][0])
-			return (-1);
-		count += int_arr[i][0];
+		{
+			*count = -1;
+			*line = -1;
+			return ;
+		}
+		*count += int_arr[i][0];
+		*line = int_arr[i][0];
 		i++;
 	}
-	return (count);
 }
 
 static t_point	*get_points_from_int(int **arr, int count)
@@ -90,9 +93,9 @@ static t_point	*get_points_from_int(int **arr, int count)
 		j = 0;
 		while (++j <= arr[i][0])
 		{
-            result[pos].x = i + 1;
-            result[pos].y = j;
-            result[pos].z = arr[i][j];
+			result[pos].x = i + 1;
+			result[pos].y = j;
+			result[pos].z = arr[i][j];
 			v3s_mull(&result[pos].c, 10, &result[pos].c);
 //			result[pos].color = 0;
 			pos++;
@@ -102,7 +105,7 @@ static t_point	*get_points_from_int(int **arr, int count)
 	return (result);
 }
 
-t_point			*get_points(char *altitudes, int *count)
+t_point			*get_points(char *altitudes, int *count, int *line_size)
 {
 	int		**int_arr;
 	char	**char_arr;
@@ -116,7 +119,8 @@ t_point			*get_points(char *altitudes, int *count)
 		return (NULL);
 	}
 	free_char_arr(&char_arr);
-	*count = count_of_points(int_arr);
+	count_of_points(int_arr, count, line_size);
+	//printf("%i %i =(\n", *count, *line_size);
 	if (*count == -1 || *count == 0)
 		return (NULL);
 	result = get_points_from_int(int_arr, *count);
