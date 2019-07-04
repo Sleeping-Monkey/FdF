@@ -15,7 +15,7 @@ NAME=fdf
 OS			:=	$(shell uname -s)
 SRC			:=	create_img.c get_points.c mat4.c start.c free_int_arr.c \
 				hooks.c mat4_utils.c vec3.c ft_size_of_arr.c main.c \
-				read_from_file.c
+				read_from_file.c mat4_transform.c
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 INC_DIR		=	./includes

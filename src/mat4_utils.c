@@ -1,10 +1,12 @@
 #include "fdf.h"
 
-void          	m4_identity(t_mat4 *m)
+t_mat4			*m4_identity(t_mat4 *m)
 {
 	int	i;
 	int	j;
 
+	if ((!m && !(m = NEW(t_mat4))))
+		return (NULL);
 	i = 4;
 	while (i--)
 	{
@@ -12,6 +14,7 @@ void          	m4_identity(t_mat4 *m)
 		while (j--)
 			m->r[i][j] = i == j;
 	}
+	return (m);
 }
 
 int          	m4_is_identity(t_mat4 *m)
@@ -30,4 +33,14 @@ int          	m4_is_identity(t_mat4 *m)
 		}
 	}
 	return (1);
+}
+
+t_mat4			*m4_copy(t_mat4 *m, t_mat4 *out)
+{
+	if (!m)
+		return (NULL);
+	if ((!out && !(out = NEW(t_mat4))))
+		return (NULL);
+	ft_memmove(out, m, sizeof(t_mat4));
+	return (out);
 }

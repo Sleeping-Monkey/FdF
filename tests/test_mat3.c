@@ -5,16 +5,16 @@ static void put_m4(t_mat4 *m)
 {
     int j;
     int i = -1;
-    while (++i < 3)
+    while (++i < 4)
     {
         j = -1;
-        while (++j < 3)
+        while (++j < 4)
         {
             printf("%.2f ", m->r[i][j]);
         }
         printf("\n");
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 static void put_v3(t_vec3 *v)
@@ -24,7 +24,7 @@ static void put_v3(t_vec3 *v)
     {
         printf("%.2f ", v->v[i]);
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 int main()
@@ -48,5 +48,12 @@ int main()
 	put_v3(v3_cross(&(t_vec3) {{1, 0, 0}}, &(t_vec3) {{0, 1, 0}}, NULL));
 	put_v3(v3s_mull(&(t_vec3) {{1, 2, 3}}, 2, NULL));
 
+	t_mat4 mRot;
+	m4_setRotation(&mRot, &VEC(0, 45, 45));
+	//mRot = *m4_rotate(&mRot, &VEC(0, 45, 45), NULL);
+	put_m4(&mRot);
+	m4_identity(&mRot);
+	m4_rotate(&mRot, &VEC(0, 45, 45));
+	put_m4(&mRot);
     return (0);
 }

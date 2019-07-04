@@ -1,26 +1,28 @@
 #include "fdf.h"
 
-t_mat4           *m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out)
+t_mat4          *m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out)
 {
-    int r;
-    int c;
-    int i;
+    int		r;
+    int		c;
+    int		k;
+    t_mat4	a_copy;
+    t_mat4	b_copy;
 
-    if (!a || !b)
+    if ((!a || !b) || (!out && !(out = NEW(t_mat4))))
         return (NULL);
-    if ((!out && !(out = NEW(t_mat4))) || a == out || b == out)
-        return (NULL);
+    a == out ? a = m4_copy(a, &a_copy) : 0;
+    b == out ? b = m4_copy(b, &b_copy) : 0;
     r = 4;
     while (r--)
     {
         c = 4;
         while (c--)
         {
-            i = 4;
-            while (i--)
+			k = 4;
+            while (k--)
             {
-                if (a->r[r][i])
-                    out->r[r][c] += a->r[r][i] * b->r[i][c];
+                if (a->r[r][k])
+                    out->r[r][c] += a->r[r][k] * b->r[k][c];
             }
         }
     }
@@ -29,9 +31,7 @@ t_mat4           *m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out)
 
 t_vec3          *m4v3_mul(t_mat4 *a, t_vec3 *b, t_vec3 *out)
 {
-    if (!a || !b)
-        return (NULL);
-    if ((!out && !(out = NEW(t_vec3))) || b == out)
+    if ((!a || !b) || (!out && !(out = NEW(t_vec3))) || b == out)
         return (NULL);
     t_real w;
 	w = b->v[0] * a->r[0][3] +

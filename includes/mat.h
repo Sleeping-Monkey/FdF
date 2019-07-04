@@ -6,6 +6,7 @@
 # define EPSILON 0.000001
 # define R_ABS fabs
 # define R_ROUND round
+# define TO_RAD(a)((a)*(M_PI / 180.0))
 # define NEW(t)((t*)ft_memalloc(sizeof(t)))
 # define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
 
@@ -18,13 +19,18 @@ typedef struct  s_vec3
 {
     t_real  v[3];
 }               t_vec3;
+# define VEC(x, y, z)((t_vec3){x, y, z})
 
 // Matrix3 ops
 t_mat4          *m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out);
 t_vec3          *m4v3_mul(t_mat4 *a, t_vec3 *b, t_vec3 *out);
-t_vec3          *m4_translate(t_mat4 *a, t_vec3 *b, t_vec3 *out);
-void          	m4_identity(t_mat4 *m);
+t_mat4			*m4_identity(t_mat4 *m);
 int          	m4_is_identity(t_mat4 *m);
+t_mat4			*m4_copy(t_mat4 *m, t_mat4 *out);
+void			m4_translate(t_mat4 *m, t_vec3 *t);
+void			m4_rotate(t_mat4 *m, t_vec3 *r);
+void			m4_setRotation(t_mat4 *m, t_vec3 *r);
+void			m4_scale(t_mat4 *m, t_vec3 *s);
 // TODO: Determinant and Inverse
 //		implement this?
 //		https://www.sanfoundry.com/c-program-find-inverse-matrix/
