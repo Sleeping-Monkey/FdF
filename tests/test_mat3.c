@@ -49,7 +49,7 @@ int main()
 	put_v3(v3s_mull(&(t_vec3) {{1, 2, 3}}, 2, NULL));
 
 	t_mat4 mRot;
-	m4_setRotation(&mRot, &VEC(0, 45, 45));
+	m4_set_rotation(&mRot, &VEC(0, 45, 45));
 	//mRot = *m4_rotate(&mRot, &VEC(0, 45, 45), NULL);
 	put_m4(&mRot);
 	m4_identity(&mRot);
