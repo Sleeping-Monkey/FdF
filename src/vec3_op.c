@@ -21,26 +21,26 @@ t_vec3	*v3_norm(t_vec3 *v, t_vec3 *out)
 	mag = v3_mag(v);
 	if (!mag)
 		return (NULL);
-	out->v[0] = v->v[0] / mag;
-	out->v[1] = v->v[1] / mag;
-	out->v[2] = v->v[2] / mag;
+	out->x = v->x / mag;
+	out->y = v->y / mag;
+	out->z = v->z / mag;
 	return (out);
 }
 
 t_real	v3_mag(t_vec3 *v)
 {
 	return (sqrt(
-			pow(v->v[0], 2) +
-			pow(v->v[1], 2) +
-			pow(v->v[2], 2)));
+			pow(v->x, 2) +
+			pow(v->y, 2) +
+			pow(v->z, 2)));
 }
 
 t_vec3	*v3_cross(t_vec3 *a, t_vec3 *b, t_vec3 *out)
 {
 	if (!a || !b || (!out && !(out = NEW(t_vec3))))
 		return (NULL);
-	out->v[0] = a->v[1] * b->v[2] - a->v[2] * b->v[1];
-	out->v[1] = a->v[2] * b->v[0] - a->v[0] * b->v[2];
-	out->v[2] = a->v[0] * b->v[1] - a->v[1] * b->v[0];
+	out->x = a->y * b->z - a->z * b->y;
+	out->y = a->z * b->x - a->x * b->z;
+	out->z = a->x * b->y - a->y * b->x;
 	return (out);
 }

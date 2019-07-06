@@ -15,21 +15,21 @@
 void	m4_translate(t_mat4 *m, t_vec3 *t)
 {
 	m->r[3][0] +=
-			t->v[0] * m->r[0][0] +
-			t->v[1] * m->r[1][0] +
-			t->v[2] * m->r[2][0];
+			t->x * m->r[0][0] +
+			t->y * m->r[1][0] +
+			t->z * m->r[2][0];
 	m->r[3][1] +=
-			t->v[0] * m->r[0][1] +
-			t->v[1] * m->r[1][1] +
-			t->v[2] * m->r[2][1];
+			t->x * m->r[0][1] +
+			t->y * m->r[1][1] +
+			t->z * m->r[2][1];
 	m->r[3][2] +=
-			t->v[0] * m->r[0][2] +
-			t->v[1] * m->r[1][2] +
-			t->v[2] * m->r[2][2];
+			t->x * m->r[0][2] +
+			t->y * m->r[1][2] +
+			t->z * m->r[2][2];
 	m->r[3][3] +=
-			t->v[0] * m->r[0][3] +
-			t->v[1] * m->r[1][3] +
-			t->v[2] * m->r[2][3];
+			t->x * m->r[0][3] +
+			t->y * m->r[1][3] +
+			t->z * m->r[2][3];
 }
 
 void	m4_set_rotation(t_mat4 *m, t_vec3 *r)
@@ -38,12 +38,12 @@ void	m4_set_rotation(t_mat4 *m, t_vec3 *r)
 	t_real	sin_v[3];
 
 	m4_identity(m);
-	cos_v[2] = cos(TO_RAD(r->v[2]));
-	cos_v[1] = cos(TO_RAD(r->v[1]));
-	cos_v[0] = cos(TO_RAD(r->v[0]));
-	sin_v[2] = sin(TO_RAD(r->v[2]));
-	sin_v[1] = sin(TO_RAD(r->v[1]));
-	sin_v[0] = sin(TO_RAD(r->v[0]));
+	cos_v[2] = cos(TO_RAD(r->z));
+	cos_v[1] = cos(TO_RAD(r->y));
+	cos_v[0] = cos(TO_RAD(r->x));
+	sin_v[2] = sin(TO_RAD(r->z));
+	sin_v[1] = sin(TO_RAD(r->y));
+	sin_v[0] = sin(TO_RAD(r->x));
 	m->r[0][0] = cos_v[2] * cos_v[1];
 	m->r[0][1] = sin_v[2] * cos_v[1];
 	m->r[0][2] = -sin_v[1];
@@ -84,12 +84,14 @@ void	m4_scale(t_mat4 *m, t_vec3 *s)
 {
 	int r;
 	int c;
+	t_real *v;
 
+	v = (t_real *)s;
 	r = 3;
 	while (r--)
 	{
 		c = 3;
 		while (c--)
-			m->r[r][c] *= s->v[r];
+			m->r[r][c] *= v[r];
 	}
 }

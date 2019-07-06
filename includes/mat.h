@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mat.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/06 14:27:06 by bnesoi            #+#    #+#             */
+/*   Updated: 2019/07/06 14:47:14 by bnesoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TMAT_H
 # define TMAT_H
 
@@ -13,11 +25,13 @@
 typedef double	t_real;
 typedef struct  s_mat4
 {
-    t_real  r[4][4];
+	t_real  r[4][4];
 }               t_mat4;
 typedef struct  s_vec3
 {
-    t_real  v[3];
+    t_real	x;
+    t_real	y;
+    t_real	z;
 }               t_vec3;
 # define VEC(x, y, z)((t_vec3){x, y, z})
 
@@ -29,7 +43,7 @@ int          	m4_is_identity(t_mat4 *m);
 t_mat4			*m4_copy(t_mat4 *m, t_mat4 *out);
 void			m4_translate(t_mat4 *m, t_vec3 *t);
 void			m4_rotate(t_mat4 *m, t_vec3 *r);
-void			m4_setRotation(t_mat4 *m, t_vec3 *r);
+void			m4_set_rotation(t_mat4 *m, t_vec3 *r);
 void			m4_scale(t_mat4 *m, t_vec3 *s);
 // TODO: Determinant and Inverse
 //		implement this?
@@ -44,5 +58,6 @@ t_vec3          *v3_sub(t_vec3 *a, t_vec3 *b, t_vec3 *out);
 t_vec3          *v3_cross(t_vec3 *a, t_vec3 *b, t_vec3 *out);
 t_vec3          *v3_norm(t_vec3 *v, t_vec3 *out);
 t_vec3          *v3s_mull(t_vec3 *v, t_real s, t_vec3 *out);
+t_vec3			*v3_copy(t_vec3 *v, t_vec3 *out);
 
 #endif

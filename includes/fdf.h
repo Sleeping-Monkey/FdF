@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/06/28 11:44:36 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/06 14:26:53 by bnesoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,8 @@
 
 typedef struct	s_point
 {
-    union {
-        t_vec3 c;
-        struct {
-            t_real x;
-            t_real y;
-            t_real z;
-        };
-    };
-    t_vec3  color;
+	t_vec3 c;
+	t_vec3  color;
 }				t_point;
 
 typedef	struct	s_img
@@ -52,9 +45,9 @@ typedef	struct	s_img
 
 typedef struct  s_terran
 {
-    t_vec3 	**points;
-    t_mat4  mat;
-    t_vec3  pos;
+	t_vec3 	**points;
+	t_mat4  mat;
+	t_vec3  pos;
 }               t_terran;
 
 typedef struct	s_mlx

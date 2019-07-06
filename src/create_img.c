@@ -15,9 +15,9 @@
 
 static void	set_pnt_to_img(t_point *pos, t_img *img)
 {
-	printf("set_pnt: (%f, %f, %f)\n", pos->x, pos->y, pos->z);
+	printf("set_pnt: (%f, %f, %f)\n", pos->c.x, pos->c.y, pos->c.z);
 //	if (((size_t)(img->size_y * (int)(pos->x + pos->z * si30n(ANGLE)) + (int)(pos->y + pos->z * cos(ANGLE)))) < (size_t)img->size_y * img->size_x)
-		img->pic[(size_t)(img->size_y * (int)(pos->x + pos->z * cos(ANGLE)) + (int)(pos->y + pos->z * sin(ANGLE)))] = 0;
+		img->pic[(size_t)(img->size_y * (int)(pos->c.x + pos->c.z * cos(ANGLE)) + (int)(pos->c.y + pos->c.z * sin(ANGLE)))] = 0;
 }
 /*
 static void set_line_to_img(t_point *a, t_point *b, t_i10mg *img)

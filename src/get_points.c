@@ -93,9 +93,9 @@ static t_point	*get_points_from_int(int **arr, int count)
 		j = 0;
 		while (++j <= arr[i][0])
 		{
-			result[pos].x = i + 1;
-			result[pos].y = j;
-			result[pos].z = arr[i][j];
+			result[pos].c.x = i + 1;
+			result[pos].c.y = j;
+			result[pos].c.z = arr[i][j];
 			v3s_mull(&result[pos].c, 10, &result[pos].c);
 //			result[pos].color = 0;
 			pos++;
