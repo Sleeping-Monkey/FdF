@@ -60,6 +60,8 @@ typedef struct	s_mlx
 	int			line_of_points;
 	int			count_of_points;
 	t_img		img;
+
+	t_mat4		camera_space;
 }				t_mlx;
 
 t_point			*get_points(char *altitudes, int *count, int *line_size);

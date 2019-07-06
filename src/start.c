@@ -49,6 +49,7 @@ void    start(char *file_name)
 	win.img.img = mlx_new_image(win.mlx, win.img.size_y, win.img.size_x);
 	win.img.pic = (int *)mlx_get_data_addr(win.img.img,
 						&win.img.bpp, &win.img.size_line, &win.img.endian);
+	m4_identity(&win.camera_space);
 	i = 0;
 	while (i < win.img.size_x * win.img.size_y)
 		win.img.pic[i++] = (((255 << 8) + 255) << 8) + 255;
