@@ -32,27 +32,27 @@ int     init_points(t_mlx *all, char *file_name)
 
 void    start(char *file_name)
 {
-    t_mlx   displ;
+    t_mlx   win;
 	int		i;
 
-    if (!init_points(&displ, file_name))
+    if (!init_points(&win, file_name))
         return ;
-//	printf("%i %i =(\n", displ.count_of_points, displ.line_of_points);
-    displ.mlx = mlx_init();
-    displ.size_x = 300;
-	displ.size_y = 300;
-	displ.win = mlx_new_window(displ.mlx, displ.size_x, displ.size_y, "Hello!");
-    mlx_key_hook(displ.win, &key_hook, &displ);
-	mlx_mouse_hook(displ.win, &mouse_hook, &displ);
-	displ.img.size_x = displ.size_x;
-	displ.img.size_y = displ.size_y;
-	displ.img.img = mlx_new_image(displ.mlx, displ.img.size_y, displ.img.size_x);
-	displ.img.pic = (int *)mlx_get_data_addr(displ.img.img,
-						&displ.img.bpp, &displ.img.size_line, &displ.img.endian);
+//	printf("%i %i =(\n", win.count_of_points, win.line_of_points);
+    win.mlx = mlx_init();
+    win.size_x = 300;
+	win.size_y = 300;
+	win.win = mlx_new_window(win.mlx, win.size_x, win.size_y, "Hello!");
+    mlx_key_hook(win.win, &key_hook, &win);
+	mlx_mouse_hook(win.win, &mouse_hook, &win);
+	win.img.size_x = win.size_x;
+	win.img.size_y = win.size_y;
+	win.img.img = mlx_new_image(win.mlx, win.img.size_y, win.img.size_x);
+	win.img.pic = (int *)mlx_get_data_addr(win.img.img,
+						&win.img.bpp, &win.img.size_line, &win.img.endian);
 	i = 0;
-	while (i < displ.img.size_x * displ.img.size_y)
-		displ.img.pic[i++] = (((255 << 8) + 255) << 8) + 255;
-	mlx_put_image_to_window(displ.mlx, displ.win, displ.img.img, 0, 0);	
-	create_img(&displ);
-    mlx_loop(displ.mlx);
+	while (i < win.img.size_x * win.img.size_y)
+		win.img.pic[i++] = (((255 << 8) + 255) << 8) + 255;
+	mlx_put_image_to_window(win.mlx, win.win, win.img.img, 0, 0);
+	create_img(&win);
+    mlx_loop(win.mlx);
 }
