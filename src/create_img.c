@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/06/28 11:52:42 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/07 15:10:54 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 static void	set_pnt_to_img(t_point *pos, t_img *img)
 {
 	printf("set_pnt: (%f, %f, %f)\n", pos->c.x, pos->c.y, pos->c.z);
-//	if (((size_t)(img->size_y * (int)(pos->x + pos->z * si30n(ANGLE)) + (int)(pos->y + pos->z * cos(ANGLE)))) < (size_t)img->size_y * img->size_x)
+	if (pos->c.x + pos->c.z * cos(ANGLE) < img->size_x && pos->c.y + pos->c.z * sin(ANGLE) < img->size_y)
 		img->pic[(size_t)(img->size_y * (int)(pos->c.x + pos->c.z * cos(ANGLE)) + (int)(pos->c.y + pos->c.z * sin(ANGLE)))] = 0;
 }
-/*
-static void set_line_to_img(t_point *a, t_point *b, t_i10mg *img)
+
+static void set_line_to_img(t_point *a, t_point *b, t_img *img)
 {
 	t_point	c;
 	double	dx;
@@ -28,38 +28,41 @@ static void set_line_to_img(t_point *a, t_point *b, t_i10mg *img)
 	double	dz;
 	double	len;
 
-	dx = b->x - a->x;
-	dy = b->y - a->y;
-	dz = b->z - a->z;
+	dx = b->c.x - a->c.x;
+	dy = b->c.y - a->c.y;
+	dz = b->c.z - a->c.z;
 	len = sqrt(dx * dx + dy * dy + dz * dz);
 	dx /= len;
 	dy /= len;
 	dz /= len;
-	c.x = a->x;
-	c.y = a->y;
-	c.z = a->z;
+	c.c.x = a->c.x;
+	c.c.y = a->c.y;
+	c.c.z = a->c.z;
 	printf("%i %i %i", (int)dx, (int)dy, (int)dz);
-	while (fabs(c.x - b->x) > 1 || fabs(c.y - b->y) > 1 || fabs(c.z - b->z) > 1)	
+	while (fabs(c.c.x - b->c.x) > 1 || fabs(c.c.y - b->c.y) > 1 || fabs(c.c.z - b->c.z) > 1)	
 	{
 		set_pnt_to_img(&c, img);
-		c.x += dx;
-		c.y += dy;
-		c.z += dz;
+		c.c.x += dx;
+		c.c.y += dy;
+		c.c.z += dz;
 		set_pnt_to_img(&c, img);
 	}
-}10
-*/
+}
+
 void	create_img(t_mlx *displ)
 {
 	int	i;
 
 	i = 0;
-	while (i < displ->count_of_points)
+	while (i < displ->count_of_points - 1)
 	{
 //		printf("Here %zu %zu \n ", i,displ->pos->nbr_of_pos);
-		set_pnt_to_img(displ->points + i, &displ->img);
+//		set_pnt_to_img(displ->points + i, &displ->img);
 //		printf("Here %i %i \n", displ->pos->pos[i + 1].x, displ->pos->pos[i + 1].y);
-//		set_line_to_img(&displ->pos->pos[i], &displ->pos->pos[i + 1], &displ->img);
+		if (i + 1 % displ->line_of_points != 0)
+			set_line_to_img(&displ->points[i], &displ->points[i + 1], &displ->img);
+		if (i + displ->line_of_points < displ->count_of_points)
+			set_line_to_img(&displ->points[i], &displ->points[i + displ->line_of_points], &displ->img);
 		i++;		
 	}		
 }
