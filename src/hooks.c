@@ -11,22 +11,48 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int		key_hook(int keycode, t_mlx *displ)
+#define T_INC 10
+#define R_INC 10
+int		key_hook(int k, t_mlx *win)
 {
-	if (!displ)
+	if (!win)
 		return (1);
-	if (keycode == 53)
-		exit(0);
+	printf("key_hook: %i\n", k);
+	k == 53 ? exit(0):0;
+	m4_translate(&win->camera_space, &VEC((k == 119) * T_INC, 0, 0));
+	m4_translate(&win->camera_space, &VEC(-(k == 115) * T_INC, 0, 0));
+	m4_translate(&win->camera_space, &VEC(0, -(k == 100) * T_INC, 0));
+	m4_translate(&win->camera_space, &VEC(0, (k == 97) * T_INC, 0));
+	m4_rotate(&win->camera_space, &VEC(0, (k == 113) * R_INC, 0));
+	m4_rotate(&win->camera_space, &VEC(0, -(k == 101) * R_INC, 0));
+	m4_rotate(&win->camera_space, &VEC((k == 114) * R_INC, 0, 0));
+	m4_rotate(&win->camera_space, &VEC(-(k == 116) * R_INC, 0, 0));
+	m4_rotate(&win->camera_space, &VEC(0, 0, (k == 121) * R_INC));
+	m4_rotate(&win->camera_space, &VEC(0, 0, -(k == 117) * R_INC));
+	draw(win);
 	return (1);
 }
 
-int		mouse_hook(int button, int x, int y, t_mlx *displ)
+int		mouse_hook(int button, int x, int y, t_mlx *win)
 {
-	if (!displ)
+	if (!win)
 		return (1);
+
 	if (button == 1)
-		mlx_put_image_to_window(displ->mlx, displ->win, displ->img.img, 0, 0);
+	{
+		reset_view(win);
+		draw(win);
+	}
+	else if (button == 4)
+	{
+		m4_scale(&win->camera_space, &VEC(.95, .95, 1));
+		draw(win);
+	}
+	else if (button == 5)
+	{
+		m4_scale(&win->camera_space, &VEC(1.1, 1.1, 1));
+		draw(win);
+	}
 	printf("(%i, %i) - %i\n", x, y, button);
 	return (1);
 }

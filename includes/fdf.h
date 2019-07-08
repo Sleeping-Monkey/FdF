@@ -26,10 +26,19 @@
 # define BUFF_SIZE	4096
 # define USG_MSG	"./fdf file_name\n"
 
+
+typedef struct	s_color
+{
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+}				t_color;
+# define COLOR(r, g, b)((t_color){r, g, b})
+
 typedef struct	s_point
 {
-	t_vec3 c;
-	t_vec3  color;
+	t_vec3	c;
+	t_color	color;
 }				t_point;
 
 typedef	struct	s_img
@@ -72,11 +81,12 @@ void			free_int_arr(int ***arr);
 size_t			ft_size_of_arr(char **arr);
 
 void			start(char *file_name);
-int				key_hook(int keycode, t_mlx *displ);
-int				mouse_hook(int button, int x, int y, t_mlx *displ);
+int				key_hook(int k, t_mlx *win);
+int				mouse_hook(int button, int x, int y, t_mlx *win);
 
-void			create_img(t_mlx *displ);
+void			create_img(t_mlx *win);
 
-void            draw(t_terran *terran, t_mlx *displ);
-
+void			fill_win(t_mlx *win, t_color *color);
+void			draw(t_mlx *win);
+void			reset_view(t_mlx *win);
 #endif
