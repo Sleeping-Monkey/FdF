@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/06/28 11:54:21 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/08 16:05:38 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void    start(char *file_name)
         return ;
 //	printf("%i %i =(\n", win.count_of_points, win.line_of_points);
     win.mlx = mlx_init();
-    win.size_x = 300;
-	win.size_y = 300;
+    win.size_x = WIN_X;
+	win.size_y = WIN_Y;
 	win.win = mlx_new_window(win.mlx, win.size_x, win.size_y, "Hello!");
     mlx_key_hook(win.win, &key_hook, &win);
 	mlx_mouse_hook(win.win, &mouse_hook, &win);
