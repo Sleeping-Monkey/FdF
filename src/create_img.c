@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/07 15:15:54 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/08 16:16:50 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		create_img(t_mlx *win)
 		a = win->points[i];
 		// Project point A
 		m4v3_mul(&inv, &a.c, &a.c);
-		if (i + 1 % win->line_of_points != 0)
+		if ((i + 1) % win->line_of_points != 0)
 		{
 			b = win->points[i + 1];
 			// Project point B
