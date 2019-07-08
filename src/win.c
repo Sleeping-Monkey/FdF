@@ -2,11 +2,13 @@
 
 void			fill_win(t_mlx *win, t_color *color)
 {
-	size_t i;
+	size_t	i;
+	int		c;
 
-	i = 0;
-	while (i < win->img.size_x * win->img.size_y)
-		win->img.pic[i++] = (int)((unsigned)((color->r << 8u) + color->g) << 8u) + color->b;
+	i = win->img.size_x * win->img.size_y;
+	c = (int)((unsigned)((color->r << 8u) + color->g) << 8u) + color->b;
+	while (i--)
+		win->img.pic[i] = c;
 }
 
 void			draw(t_mlx *win)
