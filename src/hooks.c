@@ -18,17 +18,17 @@ int		key_hook(int k, t_mlx *win)
 	if (!win)
 		return (1);
 	printf("key_hook: %i\n", k);
-	k == 53 ? exit(0):0;
-	m4_translate(&win->camera_space, &VEC((k == 119) * T_INC, 0, 0));
-	m4_translate(&win->camera_space, &VEC(-(k == 115) * T_INC, 0, 0));
-	m4_translate(&win->camera_space, &VEC(0, -(k == 100) * T_INC, 0));
-	m4_translate(&win->camera_space, &VEC(0, (k == 97) * T_INC, 0));
-	m4_rotate(&win->camera_space, &VEC(0, (k == 113) * R_INC, 0));
-	m4_rotate(&win->camera_space, &VEC(0, -(k == 101) * R_INC, 0));
-	m4_rotate(&win->camera_space, &VEC((k == 114) * R_INC, 0, 0));
-	m4_rotate(&win->camera_space, &VEC(-(k == 116) * R_INC, 0, 0));
-	m4_rotate(&win->camera_space, &VEC(0, 0, (k == 121) * R_INC));
-	m4_rotate(&win->camera_space, &VEC(0, 0, -(k == 117) * R_INC));
+	k == KEY_ESC ? exit(0):0;
+	m4_translate(&win->camera_space, &VEC((k == KEY_W) * T_INC, 0, 0));
+	m4_translate(&win->camera_space, &VEC(-(k == KEY_S) * T_INC, 0, 0));
+	m4_translate(&win->camera_space, &VEC(0, -(k == KEY_D) * T_INC, 0));
+	m4_translate(&win->camera_space, &VEC(0, (k == KEY_A) * T_INC, 0));
+	m4_rotate(&win->camera_space, &VEC(0, (k == KEY_Q) * R_INC, 0));
+	m4_rotate(&win->camera_space, &VEC(0, -(k == KEY_E) * R_INC, 0));
+	m4_rotate(&win->camera_space, &VEC((k == KEY_R) * R_INC, 0, 0));
+	m4_rotate(&win->camera_space, &VEC(-(k == KEY_T) * R_INC, 0, 0));
+	m4_rotate(&win->camera_space, &VEC(0, 0, (k == KEY_Y) * R_INC));
+	m4_rotate(&win->camera_space, &VEC(0, 0, -(k == KEY_U) * R_INC));
 	draw(win);
 	return (1);
 }

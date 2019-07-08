@@ -22,6 +22,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include "mat.h"
+# include "keys.h"
 
 # define BUFF_SIZE	4096
 # define USG_MSG	"./fdf file_name\n"
