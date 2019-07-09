@@ -17,6 +17,7 @@ SRC			:=	create_img.c get_points.c mat4.c start.c free_int_arr.c \
 				hooks.c mat4_utils.c vec3.c ft_size_of_arr.c main.c \
 				read_from_file.c mat4_transform.c vec3_op.c win.c finish.c \
 				get_height_and_color.c
+HEADERS		=	mat.h fdf.h keys.h
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 INC_DIR		=	./includes
@@ -36,6 +37,7 @@ CC=gcc
 CC_FLAGS=-Wall -Wextra -Werror
 
 OBJ=$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+HEADERS_FILES=$(addprefix $(INC_DIR)/, $(HEADERS))
 LIBS=-L$(LIBFT_DIR) -lft $(MINILIBX_LINK) -lm
 INCLUDES=-I $(LIBFT_DIR) -I $(MINILIBX_DIR) -I $(INC_DIR)
 TEST_NAMES=test_mat3 test_mat_inverse
@@ -43,7 +45,7 @@ TEST_SRC:=$(shell find src/ -maxdepth 1 -type f \( -regex ".*\.c" ! -name "main.
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c $(HEADERS_FILES)
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
 
