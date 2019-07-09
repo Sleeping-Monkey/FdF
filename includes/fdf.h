@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/08 15:41:18 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/08 17:48:54 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct	s_mlx
 	t_mat4		camera_space;
 }				t_mlx;
 
-t_point			*get_points(char *altitudes, int *count, int *line_size);
+int				get_points(char *altitudes, t_mlx *displ);
 
 char			*read_from_file(char *file_name);
 

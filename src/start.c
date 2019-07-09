@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/08 16:05:38 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/08 18:39:17 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int     init_points(t_mlx *all, char *file_name)
 		ft_putendl_fd("error", 2);
 		return (0);
 	}
-	if (!(all->points = get_points(str, &all->count_of_points, &all->line_of_points)))
+	if (!get_points(str, all))
 	{
 		ft_putendl_fd("error", 2);
+		free(str);
 		return (0);
 	}
 	free(str);
