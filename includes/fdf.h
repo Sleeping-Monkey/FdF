@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 12:11:30 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 14:59:13 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 int				get_points(char *altitudes, t_mlx *displ);
+int				get_height_and_color(char *str, int *height, int *color);
 
 char			*read_from_file(char *file_name);
 
@@ -83,6 +84,7 @@ void			free_int_arr(int ***arr);
 size_t			ft_size_of_arr(char **arr);
 
 void			start(char *file_name);
+void			finish(t_mlx *displ);
 int				key_hook(int k, t_mlx *win);
 int				mouse_hook(int button, int x, int y, t_mlx *win);
 

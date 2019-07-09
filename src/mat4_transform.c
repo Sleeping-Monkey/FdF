@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mat4_transform.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:33:58 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/07/06 14:36:56 by bnesoi           ###   ########.fr       */
+/*   Updated: 2019/07/09 15:09:06 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	m4_rotate(t_mat4 *m, t_vec3 *r)
 
 void	m4_scale(t_mat4 *m, t_vec3 *s)
 {
-	int r;
-	int c;
-	t_real *v;
+	int		r;
+	int		c;
+	t_real	*v;
 
 	v = (t_real *)s;
 	r = 3;

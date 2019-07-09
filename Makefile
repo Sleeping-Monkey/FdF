@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 15:11:22 by bnesoi            #+#    #+#              #
-#    Updated: 2019/06/28 11:24:04 by ssheba           ###   ########.fr        #
+#    Updated: 2019/07/09 15:13:18 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME=fdf
 OS			:=	$(shell uname -s)
 SRC			:=	create_img.c get_points.c mat4.c start.c free_int_arr.c \
 				hooks.c mat4_utils.c vec3.c ft_size_of_arr.c main.c \
-				read_from_file.c mat4_transform.c vec3_op.c win.c
+				read_from_file.c mat4_transform.c vec3_op.c win.c finish.c \
+				get_height_and_color.c
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 INC_DIR		=	./includes

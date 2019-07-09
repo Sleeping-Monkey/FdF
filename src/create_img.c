@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 13:33:26 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 15:10:58 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,40 @@
 
 static void	set_pnt_to_img(t_point *pos, t_img *img)
 {
-	//printf("set_pnt: (%f, %f, %f)\n", pos->c.x, pos->c.y, pos->c.z);
 	unsigned	color;
 
-	color = (((pos->color.r << 8) + pos->color.g) << 8) + pos->color.b; 
-	if (pos->c.x > 0 && pos->c.x < img->size_x && pos->c.y > 0 && pos->c.y < img->size_y)
-		img->pic[(size_t)(img->size_y * (int)(pos->c.x) + (int)(pos->c.y))] = color;
+	color = (((pos->color.r << 8) + pos->color.g) << 8) + pos->color.b;
+	if (pos->c.x > 0 && pos->c.x < img->size_x && pos->c.y > 0 && \
+	pos->c.y < img->size_y)
+		img->pic[(size_t)(img->size_y * (int)(pos->c.x) + (int)(pos->c.y))] = \
+		color;
+}
+
+unsigned	ft_max(unsigned a, unsigned b, unsigned c)
+{
+	if (a >= b && a >= c)
+		return (a);
+	if (b >= a && b >= c)
+		return (b);
+	return (c);
 }
 
 static void	set_line_to_img(t_point *a, t_point *b, t_img *img)
 {
-	t_point	c;
-	t_vec3	d;
-	t_color dc;
+	t_point		c;
+	t_vec3		d;
+	t_color		dc;
+	unsigned	steps;
 
 	d = VEC(b->c.x - a->c.x, b->c.y - a->c.y, b->c.z - a->c.z);
 	v3_norm(&d, &d);
 	c.c = VEC(a->c.x, a->c.y, a->c.z);
 	c.color = a->color;
-	dc.r = (b->color.r - a->color.r) / (unsigned)((b->c.x - a->c.x) / d.x);
-	dc.g = (b->color.g - a->color.g) / (unsigned)((b->c.x - a->c.x) / d.x);
-	dc.b = (b->color.b - a->color.b) / (unsigned)((b->c.x - a->c.x) / d.x);
-	// printf("%i %i %i", (int)dx, (int)dy, (int)dz);
+	steps = ft_max((unsigned)((b->c.x - a->c.x) / d.x), \
+	(unsigned)((b->c.y - a->c.y) / d.y), (unsigned)((b->c.z - a->c.z) / d.z));
+	dc.r = (b->color.r - a->color.r) / steps;
+	dc.g = (b->color.g - a->color.g) / steps;
+	dc.b = (b->color.b - a->color.b) / steps;
 	while (fabs(c.c.x - b->c.x) > 1 || fabs(c.c.y - b->c.y) > 1 || \
 	fabs(c.c.z - b->c.z) > 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 12:28:59 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 14:54:16 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ void	init_bounding_box(t_mlx *displ)
 		if (displ->right.c.z < displ->points[i].c.z)
 			displ->right.c.z = displ->points[i].c.z;
 	}
-	//printf("left = (%f, %f, %f), right = (%f, %f, %f)\n", displ->left.c.x, displ->left.c.y, displ->left.c.z, displ->right.c.x, displ->right.c.y, displ->right.c.z);
 }
 
-int     init_points(t_mlx *displ, char *file_name)
+int		init_points(t_mlx *displ, char *file_name)
 {
-    char    *str;
+	char	*str;
 
-    if (!(str = read_from_file(file_name)))
+	if (!(str = read_from_file(file_name)))
 	{
 		ft_putendl_fd("error", 2);
 		return (0);
@@ -56,21 +55,20 @@ int     init_points(t_mlx *displ, char *file_name)
 	}
 	free(str);
 	init_bounding_box(displ);
-    return (1);
+	return (1);
 }
 
-void    start(char *file_name)
+void	start(char *file_name)
 {
-    t_mlx   win;
+	t_mlx	win;
 
-    if (!init_points(&win, file_name))
-        return ;
-//	printf("%i %i =(\n", win.count_of_points, win.line_of_points);
-    win.mlx = mlx_init();
-    win.size_x = WIN_X;
+	if (!init_points(&win, file_name))
+		return ;
+	win.mlx = mlx_init();
+	win.size_x = WIN_X;
 	win.size_y = WIN_Y;
 	win.win = mlx_new_window(win.mlx, win.size_x, win.size_y, "Hello!");
-    mlx_key_hook(win.win, &key_hook, &win);
+	mlx_key_hook(win.win, &key_hook, &win);
 	mlx_mouse_hook(win.win, &mouse_hook, &win);
 	win.img.size_x = win.size_x;
 	win.img.size_y = win.size_y;
@@ -79,5 +77,5 @@ void    start(char *file_name)
 						&win.img.bpp, &win.img.size_line, &win.img.endian);
 	reset_view(&win);
 	draw(&win);
-    mlx_loop(win.mlx);
+	mlx_loop(win.mlx);
 }

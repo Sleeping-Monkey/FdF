@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:43:24 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/07/06 14:48:45 by bnesoi           ###   ########.fr       */
+/*   Updated: 2019/07/09 15:07:15 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vec3	*v3s_mull(t_vec3 *v, t_real s, t_vec3 *out)
 	return (out);
 }
 
-t_vec3			*v3_copy(t_vec3 *v, t_vec3 *out)
+t_vec3	*v3_copy(t_vec3 *v, t_vec3 *out)
 {
 	if (!v)
 		return (NULL);
