@@ -25,6 +25,8 @@
 # include "keys.h"
 
 # define BUFF_SIZE	4096
+# define WIN_X 1000
+# define WIN_Y 1000
 # define USG_MSG	"./fdf file_name\n"
 
 typedef struct	s_color

@@ -25,8 +25,6 @@
 	# define KEY_Y 16
 	# define KEY_U 32
 	# define KEY_ESC 53
-	# define WIN_X 1000
-	# define WIN_Y 1000
 # else
 	# define KEY_W 119
 	# define KEY_A 97
@@ -39,7 +37,5 @@
 	# define KEY_Y 121
 	# define KEY_U 117
 	# define KEY_ESC 65307
-	# define WIN_X 300
-	# defien WIN_Y 300
 # endif
 #endif
