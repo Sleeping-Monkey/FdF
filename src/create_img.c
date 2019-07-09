@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 11:54:20 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 13:33:26 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,24 @@ static void	set_line_to_img(t_point *a, t_point *b, t_img *img)
 {
 	t_point	c;
 	t_vec3	d;
+	t_color dc;
 
 	d = VEC(b->c.x - a->c.x, b->c.y - a->c.y, b->c.z - a->c.z);
 	v3_norm(&d, &d);
 	c.c = VEC(a->c.x, a->c.y, a->c.z);
 	c.color = a->color;
+	dc.r = (b->color.r - a->color.r) / (unsigned)((b->c.x - a->c.x) / d.x);
+	dc.g = (b->color.g - a->color.g) / (unsigned)((b->c.x - a->c.x) / d.x);
+	dc.b = (b->color.b - a->color.b) / (unsigned)((b->c.x - a->c.x) / d.x);
 	// printf("%i %i %i", (int)dx, (int)dy, (int)dz);
 	while (fabs(c.c.x - b->c.x) > 1 || fabs(c.c.y - b->c.y) > 1 || \
 	fabs(c.c.z - b->c.z) > 1)
 	{
 		set_pnt_to_img(&c, img);
 		v3_add(&c.c, &d, &c.c);
+		c.color.r += dc.r;
+		c.color.g += dc.g;
+		c.color.b += dc.b;
 		set_pnt_to_img(&c, img);
 	}
 }
