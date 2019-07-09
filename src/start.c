@@ -6,13 +6,40 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/08 18:39:17 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 12:28:59 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int     init_points(t_mlx *all, char *file_name)
+void	init_bounding_box(t_mlx *displ)
+{
+	int	i;
+
+	i = 0;
+	displ->left.c = VEC(displ->points[0].c.x, displ->points[0].c.y, \
+	displ->points[0].c.z);
+	displ->right.c = VEC(displ->points[0].c.x, displ->points[0].c.y, \
+	displ->points[0].c.z);
+	while (++i < displ->count_of_points)
+	{
+		if (displ->left.c.x > displ->points[i].c.x)
+			displ->left.c.x = displ->points[i].c.x;
+		if (displ->left.c.y > displ->points[i].c.y)
+			displ->left.c.y = displ->points[i].c.y;
+		if (displ->left.c.z > displ->points[i].c.z)
+			displ->left.c.z = displ->points[i].c.z;
+		if (displ->right.c.x < displ->points[i].c.x)
+			displ->right.c.x = displ->points[i].c.x;
+		if (displ->right.c.y < displ->points[i].c.y)
+			displ->right.c.y = displ->points[i].c.y;
+		if (displ->right.c.z < displ->points[i].c.z)
+			displ->right.c.z = displ->points[i].c.z;
+	}
+	//printf("left = (%f, %f, %f), right = (%f, %f, %f)\n", displ->left.c.x, displ->left.c.y, displ->left.c.z, displ->right.c.x, displ->right.c.y, displ->right.c.z);
+}
+
+int     init_points(t_mlx *displ, char *file_name)
 {
     char    *str;
 
@@ -21,13 +48,14 @@ int     init_points(t_mlx *all, char *file_name)
 		ft_putendl_fd("error", 2);
 		return (0);
 	}
-	if (!get_points(str, all))
+	if (!get_points(str, displ))
 	{
 		ft_putendl_fd("error", 2);
 		free(str);
 		return (0);
 	}
 	free(str);
+	init_bounding_box(displ);
     return (1);
 }
 

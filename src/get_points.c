@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:06:29 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 11:50:38 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 12:25:22 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int get_height_and_color(char *str, int *height, int *color)
 	size_t	i;
 	int		sign;
 
-	printf("%s ", str);
+//	printf("%s ", str);
 	len = ft_strlen(str);
 	i = 0;
 	sign = 1;

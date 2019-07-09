@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/08 17:48:54 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/09 12:11:30 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct	s_mlx
 	t_point		*points;
 	int			line_of_points;
 	int			count_of_points;
+	t_point		left;
+	t_point		right;
 	t_img		img;
 
 	t_mat4		camera_space;
