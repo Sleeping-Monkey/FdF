@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 14:58:00 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 15:12:22 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/10 14:07:27 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int			get_height_and_color(char *str, int *height, int *color)
 	if (i == len)
 	{
 		*color = 0;
-		printf(" ok\n");
 		return (1);
 	}
 	return (get_color(str, i, color));
