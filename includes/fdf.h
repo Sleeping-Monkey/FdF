@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 14:59:13 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/10 13:58:09 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void			start(char *file_name);
 void			finish(t_mlx *win);
 char			*read_from_file(char *file_name);
 int				get_points(char *altitudes, t_mlx *win);
+void			count_of_points(int **int_arr, int *count, int *line);
 int				get_height_and_color(char *str, int *height, int *color);
 void			create_img(t_mlx *win);
 
@@ -89,4 +90,5 @@ int				mouse_hook(int button, int x, int y, t_mlx *win);
 void			fill_win(t_mlx *win, t_color *color);
 void			draw(t_mlx *win);
 void			reset_view(t_mlx *win);
+
 #endif

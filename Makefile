@@ -6,7 +6,7 @@
 #    By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/11 15:11:22 by bnesoi            #+#    #+#              #
-#    Updated: 2019/07/09 15:13:18 by ssheba           ###   ########.fr        #
+#    Updated: 2019/07/10 13:57:12 by ssheba           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OS			:=	$(shell uname -s)
 SRC			:=	create_img.c get_points.c mat4.c start.c free_int_arr.c \
 				hooks.c mat4_utils.c vec3.c ft_size_of_arr.c main.c \
 				read_from_file.c mat4_transform.c vec3_op.c win.c finish.c \
-				get_height_and_color.c
+				get_height_and_color.c count_of_points.c
 HEADERS		=	mat.h fdf.h keys.h
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft

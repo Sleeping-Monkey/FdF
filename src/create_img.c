@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 15:10:58 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/10 13:51:42 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,21 @@ void			create_img(t_mlx *win)
 	t_point a;
 	t_point b;
 
-	// Get camera inverse matrix to project points
 	m4_inv(&win->camera_space, &inv);
 	i = 0;
 	while (i < win->count_of_points - 1)
 	{
 		a = win->points[i];
-		// Project point A
 		m4v3_mul(&inv, &a.c, &a.c);
 		if ((i + 1) % win->line_of_points != 0)
 		{
 			b = win->points[i + 1];
-			// Project point B
 			m4v3_mul(&inv, &b.c, &b.c);
 			set_line_to_img(&a, &b, &win->img);
 		}
 		if (i + win->line_of_points < win->count_of_points)
 		{
 			b = win->points[i + win->line_of_points];
-			// Project point B
 			m4v3_mul(&inv, &b.c, &b.c);
 			set_line_to_img(&a, &b, &win->img);
 		}

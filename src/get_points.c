@@ -6,11 +6,19 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:06:29 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 15:08:12 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/10 13:56:34 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int		cast_norm(char ***a, int **b, int **c)
+{
+	free_char_arr(a);
+	free(*b);
+	free(*c);
+	return (0);
+}
 
 static int		get_int_from_line(char *line, int **int_line, int **color)
 {
@@ -32,18 +40,11 @@ static int		get_int_from_line(char *line, int **int_line, int **color)
 		return (0);
 	}
 	(*int_line)[0] = size;
-	i = 0;
-	while (i < size)
-	{
-		if (!get_height_and_color(heights[i], (*int_line) + i + 1, (*color) + i))
-		{
-			free_char_arr(&heights);
-			free(*int_line);
-			free(*color);
-			return (0);
-		}
-		i++;
-	}
+	i = (size_t)-1;
+	while (++i < size)
+		if (!get_height_and_color(heights[i], (*int_line) + i + 1, \
+		(*color) + i))
+			return (cast_norm(&heights, int_line, color));
 	free_char_arr(&heights);
 	return (1);
 }
@@ -74,26 +75,6 @@ static int		get_int(char **lines, int ***int_arr, int ***colors)
 			return (0);
 		}
 	return (1);
-}
-
-static void		count_of_points(int **int_arr, int *count, int *line)
-{
-	int	i;
-
-	i = 0;
-	*count = 0;
-	while (int_arr[i])
-	{
-		if (i && int_arr[i][0] != int_arr[i - 1][0])
-		{
-			*count = -1;
-			*line = -1;
-			return ;
-		}
-		*count += int_arr[i][0];
-		*line = int_arr[i][0];
-		i++;
-	}
 }
 
 static t_point	*get_points_from_int(int **arr, int **color, int count)

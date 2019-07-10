@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:09:38 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 14:56:49 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/10 13:51:21 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		key_hook(int k, t_mlx *win)
 {
 	if (!win)
 		return (1);
-//	printf("key_hook: %i\n", k);
 	k == KEY_ESC ? finish(win) : 0;
 	m4_translate(&win->camera_space, &VEC((k == KEY_W) * T_INC, 0, 0));
 	m4_translate(&win->camera_space, &VEC(-(k == KEY_S) * T_INC, 0, 0));
@@ -53,6 +52,5 @@ int		mouse_hook(int button, int x, int y, t_mlx *win)
 		m4_scale(&win->camera_space, &VEC(1.1, 1.1, 1));
 		draw(win);
 	}
-//	printf("(%i, %i) - %i\n", x, y, button);
 	return (1);
 }
