@@ -56,9 +56,9 @@ static int		get_int(char **lines, int ***int_arr, int ***colors)
 	if (!lines)
 		return (0);
 	size = ft_size_of_arr(lines);
-	if (!(*int_arr = (int **)malloc(sizeof(int *) * size + 1)))
+	if (!(*int_arr = (int **)malloc(sizeof(int *) * (size + 1))))
 		return (0);
-	if (!(*colors = (int **)malloc(sizeof(int *) * size + 1)))
+	if (!(*colors = (int **)malloc(sizeof(int *) * (size + 1))))
 	{
 		free(*int_arr);
 		return (0);
