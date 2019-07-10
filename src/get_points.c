@@ -125,7 +125,7 @@ static t_point	*get_points_from_int(int **arr, int **color, int count)
 	return (result);
 }
 
-int				get_points(char *altitudes, t_mlx *displ)
+int				get_points(char *altitudes, t_mlx *win)
 {
 	int		**int_arr;
 	int		**color_arr;
@@ -139,15 +139,15 @@ int				get_points(char *altitudes, t_mlx *displ)
 		return (0);
 	}
 	free_char_arr(&char_arr);
-	count_of_points(int_arr, &(displ->count_of_points), \
-	&(displ->line_of_points));
-	if (displ->count_of_points == 0 || displ->count_of_points == -1)
+	count_of_points(int_arr, &(win->count_of_points), \
+	&(win->line_of_points));
+	if (win->count_of_points == 0 || win->count_of_points == -1)
 		return (0);
-	displ->points = get_points_from_int(int_arr, color_arr, \
-	displ->count_of_points);
+	win->points = get_points_from_int(int_arr, color_arr, \
+	win->count_of_points);
 	free_int_arr(&int_arr);
 	free_int_arr(&color_arr);
-	if (!displ->points)
+	if (!win->points)
 		return (0);
 	return (1);
 }

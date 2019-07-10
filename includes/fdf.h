@@ -54,13 +54,6 @@ typedef	struct	s_img
 	int		endian;
 }				t_img;
 
-typedef struct  s_terran
-{
-	t_vec3 	**points;
-	t_mat4  mat;
-	t_vec3  pos;
-}               t_terran;
-
 typedef struct	s_mlx
 {
 	void		*mlx;
@@ -77,21 +70,22 @@ typedef struct	s_mlx
 	t_mat4		camera_space;
 }				t_mlx;
 
-int				get_points(char *altitudes, t_mlx *displ);
-int				get_height_and_color(char *str, int *height, int *color);
-
+void			start(char *file_name);
+void			finish(t_mlx *win);
 char			*read_from_file(char *file_name);
+int				get_points(char *altitudes, t_mlx *win);
+int				get_height_and_color(char *str, int *height, int *color);
+void			create_img(t_mlx *win);
 
 void			free_int_arr(int ***arr);
 size_t			ft_size_of_arr(char **arr);
 
-void			start(char *file_name);
-void			finish(t_mlx *displ);
 int				key_hook(int k, t_mlx *win);
 int				mouse_hook(int button, int x, int y, t_mlx *win);
 
-void			create_img(t_mlx *win);
-
+/*
+** win.c Window methods
+*/
 void			fill_win(t_mlx *win, t_color *color);
 void			draw(t_mlx *win);
 void			reset_view(t_mlx *win);

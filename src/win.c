@@ -12,7 +12,7 @@
 
 #include <fdf.h>
 
-void			fill_win(t_mlx *win, t_color *color)
+void	fill_win(t_mlx *win, t_color *color)
 {
 	size_t	i;
 	int		c;
@@ -23,14 +23,14 @@ void			fill_win(t_mlx *win, t_color *color)
 		win->img.pic[i] = c;
 }
 
-void			draw(t_mlx *win)
+void	draw(t_mlx *win)
 {
 	fill_win(win, &COLOR(255, 255, 255));
 	create_img(win);
 	mlx_put_image_to_window(win->mlx, win->win, win->img.img, 0, 0);
 }
 
-void			reset_view(t_mlx *win)
+void	reset_view(t_mlx *win)
 {
 	m4_identity(&win->camera_space);
 	m4_rotate(&win->camera_space, &VEC(0, 45, 45));

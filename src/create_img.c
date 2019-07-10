@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static void	set_pnt_to_img(t_point *pos, t_img *img)
+static void		set_pnt_to_img(t_point *pos, t_img *img)
 {
 	unsigned	color;
 
@@ -23,7 +23,7 @@ static void	set_pnt_to_img(t_point *pos, t_img *img)
 		color;
 }
 
-unsigned	ft_max(unsigned a, unsigned b, unsigned c)
+static unsigned	ft_max(unsigned a, unsigned b, unsigned c)
 {
 	if (a >= b && a >= c)
 		return (a);
@@ -32,7 +32,7 @@ unsigned	ft_max(unsigned a, unsigned b, unsigned c)
 	return (c);
 }
 
-static void	set_line_to_img(t_point *a, t_point *b, t_img *img)
+static void		set_line_to_img(t_point *a, t_point *b, t_img *img)
 {
 	t_point		c;
 	t_vec3		d;
@@ -60,7 +60,7 @@ static void	set_line_to_img(t_point *a, t_point *b, t_img *img)
 	}
 }
 
-void		create_img(t_mlx *win)
+void			create_img(t_mlx *win)
 {
 	int		i;
 	t_mat4	inv;

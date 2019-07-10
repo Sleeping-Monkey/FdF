@@ -12,11 +12,11 @@
 
 #include "fdf.h"
 
-void	finish(t_mlx *displ)
+void	finish(t_mlx *win)
 {
-	free(displ->points);
-	mlx_destroy_image(displ->mlx, displ->img.img);
-	mlx_destroy_window(displ->mlx, displ->win);
-	free(displ->mlx);
+	free(win->points);
+	mlx_destroy_image(win->mlx, win->img.img);
+	mlx_destroy_window(win->mlx, win->win);
+	free(win->mlx);
 	exit(0);
 }

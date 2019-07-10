@@ -12,33 +12,33 @@
 
 #include "fdf.h"
 
-void	init_bounding_box(t_mlx *displ)
+static void	init_bounding_box(t_mlx *win)
 {
 	int	i;
 
 	i = 0;
-	displ->left.c = VEC(displ->points[0].c.x, displ->points[0].c.y, \
-	displ->points[0].c.z);
-	displ->right.c = VEC(displ->points[0].c.x, displ->points[0].c.y, \
-	displ->points[0].c.z);
-	while (++i < displ->count_of_points)
+	win->left.c = VEC(win->points[0].c.x, win->points[0].c.y, \
+	win->points[0].c.z);
+	win->right.c = VEC(win->points[0].c.x, win->points[0].c.y, \
+	win->points[0].c.z);
+	while (++i < win->count_of_points)
 	{
-		if (displ->left.c.x > displ->points[i].c.x)
-			displ->left.c.x = displ->points[i].c.x;
-		if (displ->left.c.y > displ->points[i].c.y)
-			displ->left.c.y = displ->points[i].c.y;
-		if (displ->left.c.z > displ->points[i].c.z)
-			displ->left.c.z = displ->points[i].c.z;
-		if (displ->right.c.x < displ->points[i].c.x)
-			displ->right.c.x = displ->points[i].c.x;
-		if (displ->right.c.y < displ->points[i].c.y)
-			displ->right.c.y = displ->points[i].c.y;
-		if (displ->right.c.z < displ->points[i].c.z)
-			displ->right.c.z = displ->points[i].c.z;
+		if (win->left.c.x > win->points[i].c.x)
+			win->left.c.x = win->points[i].c.x;
+		if (win->left.c.y > win->points[i].c.y)
+			win->left.c.y = win->points[i].c.y;
+		if (win->left.c.z > win->points[i].c.z)
+			win->left.c.z = win->points[i].c.z;
+		if (win->right.c.x < win->points[i].c.x)
+			win->right.c.x = win->points[i].c.x;
+		if (win->right.c.y < win->points[i].c.y)
+			win->right.c.y = win->points[i].c.y;
+		if (win->right.c.z < win->points[i].c.z)
+			win->right.c.z = win->points[i].c.z;
 	}
 }
 
-int		init_points(t_mlx *displ, char *file_name)
+static int	init_points(t_mlx *win, char *file_name)
 {
 	char	*str;
 
@@ -47,18 +47,18 @@ int		init_points(t_mlx *displ, char *file_name)
 		ft_putendl_fd("error", 2);
 		return (0);
 	}
-	if (!get_points(str, displ))
+	if (!get_points(str, win))
 	{
 		ft_putendl_fd("error", 2);
 		free(str);
 		return (0);
 	}
 	free(str);
-	init_bounding_box(displ);
+	init_bounding_box(win);
 	return (1);
 }
 
-void	start(char *file_name)
+void		start(char *file_name)
 {
 	t_mlx	win;
 
