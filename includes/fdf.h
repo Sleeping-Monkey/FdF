@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/11 14:10:36 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/11 17:22:48 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef struct	s_mlx
 	t_point		left;
 	t_point		right;
 	t_img		img;
+	unsigned	mouse_flag;
+	int			mouse_x;
+	int			mouse_y;
 
 	t_mat4		camera_space;
 }				t_mlx;
@@ -82,7 +85,9 @@ void			free_int_arr(int ***arr);
 size_t			ft_size_of_arr(char **arr);
 
 int				key_hook(int k, t_mlx *win);
-int				mouse_hook(int button, int x, int y, t_mlx *win);
+int				mouse_press(int button, int x, int y, t_mlx *win);
+int				mouse_release(int button, int x, int y, t_mlx *win);
+int 			mouse_move(int x, int y, t_mlx *win);
 
 /*
 ** win.c Window methods

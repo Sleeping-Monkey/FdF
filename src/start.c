@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/11 14:11:56 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/11 17:31:55 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ void		start(char *file_name)
 	win.size_y = WIN_Y;
 	win.win = mlx_new_window(win.mlx, win.size_x, win.size_y, "Hello!");
 	mlx_key_hook(win.win, &key_hook, &win);
-	mlx_mouse_hook(win.win, &mouse_hook, &win);
+	mlx_hook(win.win, 4, 0, &mouse_press, &win);
+	mlx_hook(win.win, 5, 0, &mouse_release, &win);
+	mlx_hook(win.win, 6, 0, &mouse_move, &win);
 	mlx_hook(win.win, 17, 0, &finish, &win);
 	win.img.size_x = win.size_x;
 	win.img.size_y = win.size_y;
