@@ -6,13 +6,13 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 14:29:22 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/09 14:54:39 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/11 14:10:46 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	finish(t_mlx *win)
+int	finish(t_mlx *win)
 {
 	free(win->points);
 	mlx_destroy_image(win->mlx, win->img.img);

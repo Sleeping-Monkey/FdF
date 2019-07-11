@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/10 13:58:09 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/11 14:10:36 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 void			start(char *file_name);
-void			finish(t_mlx *win);
+int				finish(t_mlx *win);
 char			*read_from_file(char *file_name);
 int				get_points(char *altitudes, t_mlx *win);
 void			count_of_points(int **int_arr, int *count, int *line);
