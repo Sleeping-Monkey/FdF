@@ -15,10 +15,10 @@
 void	m4_rotate_relative(t_mat4 *m, t_vec3 *p, t_vec3 *rot)
 {
 	t_mat4	inv_rel;
-	t_mat4	m_rot;
+	t_mat4	tmp;
 
-	m4_set_translate(&m_rot, p);
-	m4_mul(m, m4_inv(&m_rot, &inv_rel), m);
-	m4_rotate(&m_rot, rot);
-	m4_mul(m, &m_rot, m);
+	m4_set_translate(&tmp, p);
+	m4_mul(m, m4_inv(&tmp, &inv_rel), m);
+	m4_rotate(&tmp, rot);
+	m4_mul(m, &tmp, m);
 }
