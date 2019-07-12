@@ -63,8 +63,9 @@ typedef struct	s_mlx
 	t_point		*points;
 	int			line_of_points;
 	int			count_of_points;
-	t_point		left;
-	t_point		right;
+	t_vec3		left;
+	t_vec3		right;
+	t_vec3		center;
 	t_img		img;
 	unsigned	mouse_flag;
 	int			mouse_x;

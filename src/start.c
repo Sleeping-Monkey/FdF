@@ -17,25 +17,26 @@ static void	init_bounding_box(t_mlx *win)
 	int	i;
 
 	i = 0;
-	win->left.c = VEC(win->points[0].c.x, win->points[0].c.y, \
+	win->left = VEC(win->points[0].c.x, win->points[0].c.y, \
 	win->points[0].c.z);
-	win->right.c = VEC(win->points[0].c.x, win->points[0].c.y, \
+	win->right = VEC(win->points[0].c.x, win->points[0].c.y, \
 	win->points[0].c.z);
 	while (++i < win->count_of_points)
 	{
-		if (win->left.c.x > win->points[i].c.x)
-			win->left.c.x = win->points[i].c.x;
-		if (win->left.c.y > win->points[i].c.y)
-			win->left.c.y = win->points[i].c.y;
-		if (win->left.c.z > win->points[i].c.z)
-			win->left.c.z = win->points[i].c.z;
-		if (win->right.c.x < win->points[i].c.x)
-			win->right.c.x = win->points[i].c.x;
-		if (win->right.c.y < win->points[i].c.y)
-			win->right.c.y = win->points[i].c.y;
-		if (win->right.c.z < win->points[i].c.z)
-			win->right.c.z = win->points[i].c.z;
+		if (win->left.x > win->points[i].c.x)
+			win->left.x = win->points[i].c.x;
+		if (win->left.y > win->points[i].c.y)
+			win->left.y = win->points[i].c.y;
+		if (win->left.z > win->points[i].c.z)
+			win->left.z = win->points[i].c.z;
+		if (win->right.x < win->points[i].c.x)
+			win->right.x = win->points[i].c.x;
+		if (win->right.y < win->points[i].c.y)
+			win->right.y = win->points[i].c.y;
+		if (win->right.z < win->points[i].c.z)
+			win->right.z = win->points[i].c.z;
 	}
+	v3s_mull(&win->right, 0.5, &win->center);
 }
 
 static int	init_points(t_mlx *win, char *file_name)

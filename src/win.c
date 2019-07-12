@@ -35,4 +35,5 @@ void	reset_view(t_mlx *win)
 	m4_identity(&win->camera_space);
 	m4_rotate(&win->camera_space, &VEC(0, 45, 45));
 	m4_translate(&win->camera_space, &VEC(-60, -100, 0));
+	m4_scale(&win->camera_space, &VEC(0.5, 0.5, 0.5));
 }
