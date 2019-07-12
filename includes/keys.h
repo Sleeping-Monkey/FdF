@@ -24,6 +24,7 @@
 #  define KEY_T 17
 #  define KEY_Y 16
 #  define KEY_U 32
+#  define KEY_V 118
 #  define KEY_ESC 53
 # else
 #  define KEY_W 119
@@ -36,6 +37,7 @@
 #  define KEY_T 116
 #  define KEY_Y 121
 #  define KEY_U 117
+#  define KEY_V 118
 #  define KEY_ESC 65307
 # endif
 #endif
