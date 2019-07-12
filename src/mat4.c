@@ -31,11 +31,10 @@ t_mat4			*m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out)
 		while (c--)
 		{
 			k = 4;
+			out->r[r][c] = 0;
 			while (k--)
-			{
 				if (a->r[r][k])
 					out->r[r][c] += a->r[r][k] * b->r[k][c];
-			}
 		}
 	}
 	return (out);
