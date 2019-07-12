@@ -32,6 +32,14 @@ void	m4_translate(t_mat4 *m, t_vec3 *t)
 			t->z * m->r[2][3];
 }
 
+void	m4_set_translate(t_mat4 *m, t_vec3 *t)
+{
+	m4_identity(m);
+	m->r[3][0] = t->x;
+	m->r[3][1] = t->y;
+	m->r[3][2] = t->z;
+}
+
 void	m4_set_rotation(t_mat4 *m, t_vec3 *r)
 {
 	t_real	cos_v[3];

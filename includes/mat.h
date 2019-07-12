@@ -47,6 +47,11 @@ void			m4_translate(t_mat4 *m, t_vec3 *t);
 void			m4_rotate(t_mat4 *m, t_vec3 *r);
 void			m4_set_rotation(t_mat4 *m, t_vec3 *r);
 void			m4_scale(t_mat4 *m, t_vec3 *s);
+void			m4_set_translate(t_mat4 *m, t_vec3 *t);
+t_vec3			*m4_get_translation(t_mat4 *m, t_vec3 *out);
+t_vec3			*m4_get_scale(t_mat4 *m, t_vec3 *out);
+void			m4_rotate_relative(t_mat4 *m, t_vec3 *p, t_vec3 *rot);
+
 /*
 ** TODO: Determinant and Inverse
 **		implement this?

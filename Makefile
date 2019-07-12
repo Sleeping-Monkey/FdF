@@ -16,7 +16,7 @@ OS			:=	$(shell uname -s)
 SRC			:=	create_img.c get_points.c mat4.c start.c free_int_arr.c \
 				hooks.c mat4_utils.c vec3.c ft_size_of_arr.c main.c \
 				read_from_file.c mat4_transform.c vec3_op.c win.c finish.c \
-				get_height_and_color.c count_of_points.c
+				get_height_and_color.c count_of_points.c mat4_rts.c mat4_op.c
 HEADERS		=	mat.h fdf.h keys.h
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
