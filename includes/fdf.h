@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <X11/X.h>
 
 # include "libft.h"
 # include "mlx.h"
@@ -67,7 +68,6 @@ typedef struct	s_mlx
 	t_vec3		right;
 	t_vec3		center;
 	t_img		img;
-	unsigned	mouse_flag;
 	int			mouse_x;
 	int			mouse_y;
 	unsigned	real;
@@ -89,7 +89,7 @@ size_t			ft_size_of_arr(char **arr);
 int				key_hook(int k, t_mlx *win);
 int				mouse_press(int button, int x, int y, t_mlx *win);
 int				mouse_release(int button, int x, int y, t_mlx *win);
-int 			mouse_move(int x, int y, t_mlx *win);
+int 			mouse_btn1_move(int x, int y, t_mlx *win);
 
 /*
 ** win.c Window methods

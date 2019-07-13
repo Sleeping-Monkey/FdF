@@ -53,7 +53,6 @@ int		mouse_press(int button, int x, int y, t_mlx *win)
 	}
 	else if (button == 1)
 	{
-		win->mouse_flag = 1;
 		win->mouse_x = x;
 		win->mouse_y = y;
 	}
@@ -77,33 +76,20 @@ int		mouse_press(int button, int x, int y, t_mlx *win)
 
 int		mouse_release(int button, int x, int y, t_mlx *win)
 {
-	t_vec3	vec;
 	printf("release: (%d, %d) - %d\n", x, y, button);
-	if (button == 1)
-		if (win->mouse_flag)
-		{
-			vec = VEC(x - win->mouse_x, y - win->mouse_y, 0);
-		//	m4v3_mul(&win->camera_space, &vec, &vec);
-			m4_rotate_relative(&win->camera_space, &win->center, &vec);
-			win->mouse_flag = 0;
-			draw(win);
-		}
 	return (1);
 }
 
-int 	mouse_move(int x, int y, t_mlx *win)
+int 	mouse_btn1_move(int x, int y, t_mlx *win)
 {
 	t_vec3	vec;
 	printf("move: (%d, %d) - 0\n", x, y);
 //	(void)win;
-	if (win->mouse_flag)
-	{
-		vec = VEC(x - win->mouse_x, y - win->mouse_y, 0);
-		//m4v3_mul(&win->camera_space, &vec, &vec);
-		m4_rotate_relative(&win->camera_space, &win->center, &vec);
-		win->mouse_x = x;
-		win->mouse_y = y;
-		draw(win);
-	}
+    vec = VEC(x - win->mouse_x, y - win->mouse_y, 0);
+    //m4v3_mul(&win->camera_space, &vec, &vec);
+    m4_rotate_relative(&win->camera_space, &win->center, &vec);
+    win->mouse_x = x;
+    win->mouse_y = y;
+    draw(win);
 	return (1);
 }
