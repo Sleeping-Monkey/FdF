@@ -88,7 +88,6 @@ size_t			ft_size_of_arr(char **arr);
 
 int				key_hook(int k, t_mlx *win);
 int				mouse_press(int button, int x, int y, t_mlx *win);
-int				mouse_release(int button, int x, int y, t_mlx *win);
 int 			mouse_btn1_move(int x, int y, t_mlx *win);
 
 /*
