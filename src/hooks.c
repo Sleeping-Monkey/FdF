@@ -83,10 +83,12 @@ int		mouse_release(int button, int x, int y, t_mlx *win)
 int 	mouse_btn1_move(int x, int y, t_mlx *win)
 {
 	t_vec3	vec;
+	t_mat4	rot;
+
 	printf("move: (%d, %d) - 0\n", x, y);
-//	(void)win;
-    vec = VEC(x - win->mouse_x, y - win->mouse_y, 0);
-    //m4v3_mul(&win->camera_space, &vec, &vec);
+    m4_extract_rotation(&win->camera_space, &rot);
+    vec = VEC(x - win->mouse_x, -(y - win->mouse_y), 0);
+    m4v3_mul(&rot, &vec, &vec);
     m4_rotate_relative(&win->camera_space, &win->center, &vec);
     win->mouse_x = x;
     win->mouse_y = y;
