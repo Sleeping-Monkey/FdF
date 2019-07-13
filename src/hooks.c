@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 #define T_INC 10
-#define R_INC 10
+#define R_INC 2
 
 int		key_hook(int k, t_mlx *win)
 {

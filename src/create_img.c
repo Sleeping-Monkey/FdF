@@ -20,9 +20,11 @@ static unsigned	get_real_color(t_point *pos, t_mlx *win, t_mat4 *inv)
 	t_vec3	tmp;
 
 	m4v3_mul(&win->camera_space, &pos->c, &tmp_pos);
-	m4v3_mul(&win->camera_space, &win->left, &tmp);
+//	m4v3_mul(&win->camera_space, &win->left, &tmp);
+//	m4v3_mul(&win->camera_space, &win->right, &tmp);
+    (void)inv;
+	tmp = win->right;
 	h_min = tmp.z;
-	m4v3_mul(&win->camera_space, &win->right, &tmp);	
 	h_max = tmp.z;
 	if (tmp_pos.z > h_max * 0.9)
 		return ((((255 << 8) + 246) << 8) + 134);
