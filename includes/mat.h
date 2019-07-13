@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:27:06 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/07/10 14:03:33 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/13 16:48:58 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include "fdf.h"
 
 # define EPSILON 0.000001
-# define R_ABS fabs
+# define R_ABS fabsl
 # define R_ROUND round
 # define TO_RAD(a)((a)*(M_PI / 180.0))
 # define NEW(t)((t*)ft_memalloc(sizeof(t)))
 # define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
 
-typedef double	t_real;
+typedef long double	t_real;
 typedef struct	s_mat4
 {
 	t_real	r[4][4];
