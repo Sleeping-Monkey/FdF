@@ -22,7 +22,7 @@
 # define NEW(t)((t*)ft_memalloc(sizeof(t)))
 # define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
 
-typedef long double	t_real;
+typedef double	t_real;
 typedef struct	s_mat4
 {
 	t_real	r[4][4];
@@ -48,8 +48,9 @@ void			m4_rotate(t_mat4 *m, t_vec3 *r);
 void			m4_set_rotation(t_mat4 *m, t_vec3 *r);
 void			m4_scale(t_mat4 *m, t_vec3 *s);
 void			m4_set_translate(t_mat4 *m, t_vec3 *t);
-t_vec3			*m4_get_translation(t_mat4 *m, t_vec3 *out);
-t_vec3			*m4_get_scale(t_mat4 *m, t_vec3 *out);
+t_vec3			*m4_extract_translation(t_mat4 *m, t_vec3 *out);
+t_vec3			*m4_extract_scale(t_mat4 *m, t_vec3 *out);
+t_mat4          *m4_extract_rotation(t_mat4 *m, t_mat4 *out);
 void			m4_rotate_relative(t_mat4 *m, t_vec3 *p, t_vec3 *rot);
 
 /*
