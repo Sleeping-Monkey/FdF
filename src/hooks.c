@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:09:38 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/11 17:41:15 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/13 14:17:23 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		key_hook(int k, t_mlx *win)
 
 	if (!win)
 		return (1);
-
+printf("key: %d\n", k);
 	m = &win->camera_space;
 	p = &win->center;
 	k == KEY_ESC ? finish(win) : 0;
@@ -57,6 +57,11 @@ int		mouse_press(int button, int x, int y, t_mlx *win)
 		win->mouse_x = x;
 		win->mouse_y = y;
 	}
+	else if (button == 3)
+	{
+		win->real ^= 1;
+		draw(win);
+	}
 	else if (button == 4)
 	{
 		m4_scale(&win->camera_space, &VEC(.95, .95, 1));
@@ -76,7 +81,7 @@ int		mouse_release(int button, int x, int y, t_mlx *win)
 	if (button == 1)
 		if (win->mouse_flag)
 		{
-			m4_rotate(&win->camera_space, &VEC(x - win->mouse_x, y - win->mouse_y, 0));
+			m4_rotate_relative(&win->camera_space, &win->center, &VEC(x - win->mouse_x, y - win->mouse_y, 0));
 			win->mouse_flag = 0;
 			draw(win);
 		}
@@ -89,7 +94,7 @@ int 	mouse_move(int x, int y, t_mlx *win)
 //	(void)win;
 	if (win->mouse_flag)
 	{
-		m4_rotate(&win->camera_space, &VEC(x - win->mouse_x, y - win->mouse_y, 0));
+		m4_rotate_relative(&win->camera_space, &win->center, &VEC(x - win->mouse_x, y - win->mouse_y, 0));
 		win->mouse_x = x;
 		win->mouse_y = y;
 		draw(win);

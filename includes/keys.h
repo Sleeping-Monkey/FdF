@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 15:40:44 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/10 13:59:26 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/13 14:03:20 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #  define KEY_T 17
 #  define KEY_Y 16
 #  define KEY_U 32
-#  define KEY_V 118
+#  define KEY_V 9
 #  define KEY_ESC 53
 # else
 #  define KEY_W 119
