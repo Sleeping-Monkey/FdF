@@ -16,7 +16,7 @@
 # include "fdf.h"
 
 # define EPSILON 0.000001
-# define R_ABS fabsl
+# define R_ABS fabs
 # define R_ROUND round
 # define TO_RAD(a)((a)*(M_PI / 180.0))
 
