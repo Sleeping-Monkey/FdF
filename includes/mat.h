@@ -19,8 +19,6 @@
 # define R_ABS fabsl
 # define R_ROUND round
 # define TO_RAD(a)((a)*(M_PI / 180.0))
-# define NEW(t)((t*)ft_memalloc(sizeof(t)))
-# define NEW_S(t, s)((t*)ft_memalloc(sizeof(t) * s))
 
 typedef double	t_real;
 typedef struct	s_mat4

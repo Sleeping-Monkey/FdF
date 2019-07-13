@@ -32,7 +32,7 @@ t_mat4  *m4_extract_rotation(t_mat4 *m, t_mat4 *out)
 
 t_vec3			*m4_extract_translation(t_mat4 *m, t_vec3 *out)
 {
-	if (!m || (!out && !(out = NEW(t_vec3))))
+	if (!m || !out)
 		return (NULL);
 	out->x = m->r[3][0];
 	out->y = m->r[3][1];
@@ -42,7 +42,7 @@ t_vec3			*m4_extract_translation(t_mat4 *m, t_vec3 *out)
 
 t_vec3			*m4_extract_scale(t_mat4 *m, t_vec3 *out)
 {
-	if (!m || (!out && !(out = NEW(t_vec3))))
+	if (!m || !out)
 		return (NULL);
 	out->x = v3_mag((t_vec3 *) m->r[0]);
 	out->y = v3_mag((t_vec3 *) m->r[1]);

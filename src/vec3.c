@@ -14,7 +14,7 @@
 
 t_vec3	*v3_add(t_vec3 *a, t_vec3 *b, t_vec3 *out)
 {
-	if (!a || !b || (!out && !(out = NEW(t_vec3))))
+	if (!a || !b || !out)
 		return (NULL);
 	out->x = a->x + b->x;
 	out->y = a->y + b->y;
@@ -24,7 +24,7 @@ t_vec3	*v3_add(t_vec3 *a, t_vec3 *b, t_vec3 *out)
 
 t_vec3	*v3_sub(t_vec3 *a, t_vec3 *b, t_vec3 *out)
 {
-	if (!a || !b || (!out && !(out = NEW(t_vec3))))
+	if (!a || !b || !out)
 		return (NULL);
 	out->x = a->x - b->x;
 	out->y = a->y - b->y;
@@ -34,7 +34,7 @@ t_vec3	*v3_sub(t_vec3 *a, t_vec3 *b, t_vec3 *out)
 
 t_vec3	*v3s_mull(t_vec3 *v, t_real s, t_vec3 *out)
 {
-	if (!v || (!out && !(out = NEW(t_vec3))))
+	if (!v || !out)
 		return (NULL);
 	out->x = v->x * s;
 	out->y = v->y * s;
@@ -44,9 +44,7 @@ t_vec3	*v3s_mull(t_vec3 *v, t_real s, t_vec3 *out)
 
 t_vec3	*v3_copy(t_vec3 *v, t_vec3 *out)
 {
-	if (!v)
-		return (NULL);
-	if ((!out && !(out = NEW(t_vec3))))
+	if (!v || !out)
 		return (NULL);
 	ft_memmove(out, v, sizeof(t_vec3));
 	return (out);

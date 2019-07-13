@@ -17,7 +17,7 @@ t_mat4			*m4_identity(t_mat4 *m)
 	int	i;
 	int	j;
 
-	if ((!m && !(m = NEW(t_mat4))))
+	if (!m)
 		return (NULL);
 	i = 4;
 	while (i--)
@@ -49,9 +49,7 @@ int				m4_is_identity(t_mat4 *m)
 
 t_mat4			*m4_copy(t_mat4 *m, t_mat4 *out)
 {
-	if (!m)
-		return (NULL);
-	if ((!out && !(out = NEW(t_mat4))))
+	if (!m || !out)
 		return (NULL);
 	ft_memmove(out, m, sizeof(t_mat4));
 	return (out);

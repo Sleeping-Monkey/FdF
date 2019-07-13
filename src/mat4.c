@@ -20,7 +20,7 @@ t_mat4			*m4_mul(t_mat4 *a, t_mat4 *b, t_mat4 *out)
 	t_mat4	a_copy;
 	t_mat4	b_copy;
 
-	if ((!a || !b) || (!out && !(out = NEW(t_mat4))))
+	if ((!a || !b) || !out)
 		return (NULL);
 	a == out ? a = m4_copy(a, &a_copy) : 0;
 	b == out ? b = m4_copy(b, &b_copy) : 0;
@@ -45,7 +45,7 @@ t_vec3			*m4v3_mul(t_mat4 *a, t_vec3 *b, t_vec3 *out)
 	t_real	w;
 	t_vec3	b_copy;
 
-	if ((!a || !b) || (!out && !(out = NEW(t_vec3))))
+	if (!a || !b || !out)
 		return (NULL);
 	b == out ? b = v3_copy(b, &b_copy) : 0;
 	w = b->x * a->r[0][3] +
@@ -114,7 +114,7 @@ t_mat4			*m4_inv(t_mat4 *m, t_mat4 *out)
 	t_real d;
 	t_real c[19];
 
-	if ((!out && !(out = NEW(t_mat4))))
+	if (!m || !out)
 		return (NULL);
 	coefficient(m, c);
 	d = m->r[0][0] *

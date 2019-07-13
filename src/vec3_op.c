@@ -16,7 +16,7 @@ t_vec3	*v3_norm(t_vec3 *v, t_vec3 *out)
 {
 	t_real mag;
 
-	if (!v || (!out && !(out = NEW(t_vec3))))
+	if (!v || !out)
 		return (NULL);
 	mag = v3_mag(v);
 	if (!mag)
@@ -37,7 +37,7 @@ t_real	v3_mag(t_vec3 *v)
 
 t_vec3	*v3_cross(t_vec3 *a, t_vec3 *b, t_vec3 *out)
 {
-	if (!a || !b || (!out && !(out = NEW(t_vec3))))
+	if (!a || !b || !out)
 		return (NULL);
 	out->x = a->y * b->z - a->z * b->y;
 	out->y = a->z * b->x - a->x * b->z;
