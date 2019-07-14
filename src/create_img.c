@@ -26,25 +26,21 @@ static unsigned	get_real_color(t_point *pos, t_mlx *win, t_mat4 *inv)
 	tmp = win->right;
 	h_min = tmp.z;
 	h_max = tmp.z;
-	if (tmp_pos.z > h_max * 0.9)
-		return ((((255 << 8) + 246) << 8) + 134);
-	if (tmp_pos.z > h_max * 0.7)
-		return ((((234 << 8) + 187) << 8) + 40);
-	if (tmp_pos.z > h_max * 0.4)
-		return ((((207 << 8) + 131) << 8) + 20);
-	if (tmp_pos.z > h_max * 0.2)
-		return ((((45 << 8) + 173) << 8) + 14);
-	if (tmp_pos.z >= 0)
-		return ((((45 << 8) + 226) << 8) + 0);
-	if (tmp_pos.z < h_min * 0.9)
-		return ((((7 << 8) + 63) << 8) + 155);
-	if (tmp_pos.z < h_min * 0.7)
-		return ((((7 << 8) + 116) << 8) + 155);
-	if (tmp_pos.z < h_min * 0.4)
-		return ((((0 << 8) + 167) << 8) + 160);
-	if (tmp_pos.z < h_min * 0.2)
-		return ((((0 << 8) + 226) << 8) + 168);
-	return ((((59 << 8) + 245) << 8) + 194);
+
+	t_color a;
+	t_color b;
+	t_color c;
+
+	double t = tmp_pos.z / h_max;
+	a = t < 0.5 ? COLOR(255, 0, 0) : COLOR(0, 255, 0);
+	b = t < 0.5 ? COLOR(0, 255, 0) : COLOR(0, 100, 142);
+
+    c = COLOR(
+            a.r + (b.r - a.r) * t,
+            a.g + (b.g - a.g) * t,
+            a.b + (b.b - a.b) * t
+    );
+	return PACK_COLOR(c);
 }
 
 static void		set_pnt_to_img(t_point *pos, t_mlx *win, t_mat4 *inv)

@@ -37,6 +37,7 @@ typedef struct	s_color
 	unsigned char b;
 }				t_color;
 # define COLOR(r, g, b)((t_color){r, g, b})
+# define PACK_COLOR(c)((((unsigned)((c.r << 8u) + c.g) << 8u) + c.b))
 
 typedef struct	s_point
 {

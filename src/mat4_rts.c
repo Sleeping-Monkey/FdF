@@ -16,6 +16,8 @@ t_mat4  *m4_extract_rotation(t_mat4 *m, t_mat4 *out)
 {
     t_vec3 s;
 
+    if (!m || !out)
+        return (NULL);
     m4_extract_scale(m, &s);
     m4_identity(out);
     out->r[0][0] = m->r[0][0] / s.x;
