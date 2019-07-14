@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/06 14:27:06 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/07/13 16:48:58 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 12:34:07 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			m4_scale(t_mat4 *m, t_vec3 *s);
 void			m4_set_translate(t_mat4 *m, t_vec3 *t);
 t_vec3			*m4_extract_translation(t_mat4 *m, t_vec3 *out);
 t_vec3			*m4_extract_scale(t_mat4 *m, t_vec3 *out);
-t_mat4          *m4_extract_rotation(t_mat4 *m, t_mat4 *out);
+t_mat4			*m4_extract_rotation(t_mat4 *m, t_mat4 *out);
 void			m4_rotate_relative(t_mat4 *m, t_vec3 *p, t_vec3 *rot);
 
 /*
