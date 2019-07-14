@@ -69,10 +69,11 @@ void		start(char *file_name)
 	win.size_x = WIN_X;
 	win.size_y = WIN_Y;
 	win.win = mlx_new_window(win.mlx, win.size_x, win.size_y, "Hello!");
-	mlx_hook(win.win, KeyPress, KeyPressMask, &key_hook, &win);
-	mlx_hook(win.win, ButtonPress, ButtonPressMask, &mouse_press, &win);
-	mlx_hook(win.win, MotionNotify, Button1MotionMask, &mouse_btn1_move, &win);
-	mlx_hook(win.win, DestroyNotify, 0, &finish, &win);
+	mlx_key_hook(win.win, &key_hook, &win);
+	mlx_hook(win.win, 4, 0, &mouse_press, &win);
+	mlx_hook(win.win, 5, 0, &mouse_release, &win);
+	mlx_hook(win.win, 6, 0, &mouse_move, &win);
+	mlx_hook(win.win, 17, 0, &finish, &win);
 	win.img.size_x = win.size_x;
 	win.img.size_y = win.size_y;
 	win.img.img = mlx_new_image(win.mlx, win.img.size_y, win.img.size_x);
