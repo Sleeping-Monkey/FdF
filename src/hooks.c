@@ -6,13 +6,11 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:09:38 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/14 12:33:00 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 15:14:17 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#define T_INC 10
-#define R_INC 2
 
 int		key_hook(int k, t_mlx *win)
 {
@@ -69,13 +67,7 @@ int		mouse_release(int button, int x, int y, t_mlx *win)
 	t_vec3	vec;
 
 	if (button == 1)
-		if (win->mouse_flag)
-		{
-			vec = VEC(x - win->mouse_x, y - win->mouse_y, 0);
-			m4_rotate_relative(&win->camera_space, &win->center, &vec);
-			win->mouse_flag = 0;
-			draw(win);
-		}
+		win->mouse_flag = 0;
 	return (1);
 }
 
