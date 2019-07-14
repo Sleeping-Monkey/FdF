@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/13 14:08:22 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 11:34:37 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
-# include <X11/X.h>
+//# include <X11/X.h>
 
 # include "libft.h"
 # include "mlx.h"

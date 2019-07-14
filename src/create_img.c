@@ -6,7 +6,7 @@
 /*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 07:36:27 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/13 16:49:26 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 11:53:50 by ssheba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,32 @@ static unsigned	get_real_color(t_point *pos, t_mlx *win, t_mat4 *inv)
 	double	h_min;
 	double	h_max;
 	t_vec3	tmp_pos;
-	t_vec3	tmp;
+	t_color a[10];
 
 	m4v3_mul(&win->camera_space, &pos->c, &tmp_pos);
 //	m4v3_mul(&win->camera_space, &win->left, &tmp);
 //	m4v3_mul(&win->camera_space, &win->right, &tmp);
     (void)inv;
-	tmp = win->right;
-	h_min = tmp.z;
-	h_max = tmp.z;
 
-	t_color a;
-	t_color b;
-	t_color c;
+	h_min = win->left.z;
+	h_max = win->right.z;
 
-	double t = tmp_pos.z / h_max;
-	a = t < 0.5 ? COLOR(255, 0, 0) : COLOR(0, 255, 0);
-	b = t < 0.5 ? COLOR(0, 255, 0) : COLOR(0, 100, 142);
-
-    c = COLOR(
-            a.r + (b.r - a.r) * t,
-            a.g + (b.g - a.g) * t,
-            a.b + (b.b - a.b) * t
+	if (tmp_pos.z >= 0)
+	{
+		a[0] = (tmp_pos.z / h_max >= 0.5) ? COLOR(255, 0, 0) : COLOR(0, 255, 0);
+		a[1] = (tmp_pos.z / h_max >= 0.5) ? COLOR(255, 255, 0) : COLOR(0, 100, 142);
+	}
+	else
+	{
+		a[0] = (tmp_pos.z / h_min > -0.5) ? COLOR(0, 0, 255) : COLOR(0, 255, 0);
+		a[1] = (tmp_pos.z / h_min > -0.5) ? COLOR(0, 255, 0) : COLOR(0, 100, 142);
+	}
+    a[2] = COLOR(
+            a[0].r + (a[1].r - a[0].r) * (tmp_pos.z / h_max),
+            a[0].g + (a[1].g - a[0].g) * (tmp_pos.z / h_max),
+            a[0].b + (a[1].b - a[0].b) * (tmp_pos.z / h_max)
     );
-	return PACK_COLOR(c);
+	return PACK_COLOR(a[2]);
 }
 
 static void		set_pnt_to_img(t_point *pos, t_mlx *win, t_mat4 *inv)
