@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 13:09:38 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/14 15:14:17 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 16:38:40 by bnesoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int		key_hook(int k, t_mlx *win)
 	k == KEY_S ? m4_translate(m, &VEC(-T_INC, 0, 0)) : 0;
 	k == KEY_D ? m4_translate(m, &VEC(0, -T_INC, 0)) : 0;
 	k == KEY_A ? m4_translate(m, &VEC(0, T_INC, 0)) : 0;
-	k == KEY_V ? reset_view(win) : 0;
+	k == KEY_V ? reset_view(win, &VEC(0, 45, 45)) : 0;
+	k == KEY_T ? reset_view(win, &VEC(0, 0, 0)) : 0;
 	draw(win);
 	return (1);
 }
@@ -44,7 +45,7 @@ int		mouse_press(int button, int x, int y, t_mlx *win)
 	if (!win)
 		return (1);
 	if (button == 2)
-		reset_view(win);
+		reset_view(win, &VEC(0, 45, 45));
 	else if (button == 1)
 	{
 		win->mouse_flag = 1;

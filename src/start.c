@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 12:47:14 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/14 15:12:43 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 16:38:43 by bnesoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		start(char *file_name)
 	win.img.pic = (int *)mlx_get_data_addr(win.img.img,
 						&win.img.bpp, &win.img.size_line, &win.img.endian);
 	win.real = 0;
-	reset_view(&win);
+	reset_view(&win, &VEC(0, 45, 45));
 	draw(&win);
 	mlx_loop(win.mlx);
 }

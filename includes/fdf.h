@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssheba <ssheba@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 12:13:17 by ssheba            #+#    #+#             */
-/*   Updated: 2019/07/14 15:13:59 by ssheba           ###   ########.fr       */
+/*   Updated: 2019/07/14 16:38:37 by bnesoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ int				mouse_move(int x, int y, t_mlx *win);
 */
 void			fill_win(t_mlx *win, t_color *color);
 void			draw(t_mlx *win);
-void			reset_view(t_mlx *win);
+void			reset_view(t_mlx *win, t_vec3 *r);
 
 #endif
